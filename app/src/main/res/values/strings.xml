@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">redir</string>
+    <string name="this_is_first_practical_work">Practice Num 1</string>
+    <string name="i_want_to_teleport">Drop me</string>
+    <string name="completed_sheesh">www.porsche.com</string>
+    <string name="error_accessing_file">Error accessing file</string>
+</resources>
