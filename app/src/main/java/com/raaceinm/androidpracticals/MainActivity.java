@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             String TextFromAutocomplete = autoCompleteTextView.getText().toString();
             Toast.makeText(this, "Redirecting to: " + TextFromAutocomplete, Toast.LENGTH_SHORT).show();
 
-            String url = "https://" + TextFromAutocomplete; // Add https://
+            String url = "https://" + TextFromAutocomplete;
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
         });
