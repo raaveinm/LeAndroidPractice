@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = new Intent(this, FilesTestActivity.class);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -40,11 +41,6 @@ public class MainActivity extends AppCompatActivity {
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
 
         myButton.setOnClickListener(v -> {
-            String TextFromAutocomplete = autoCompleteTextView.getText().toString();
-            Toast.makeText(this, "Redirecting to: " + TextFromAutocomplete, Toast.LENGTH_SHORT).show();
-
-            String url = "https://" + TextFromAutocomplete;
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
         });
     }
