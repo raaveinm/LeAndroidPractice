@@ -1,6 +1,8 @@
 package com.raaceinm.androidpracticals;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.webkit.WebView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +12,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class FilesTestActivity extends AppCompatActivity {
 
+    private static final String TAG = "FilesTestActivity";
+    private WebView webView;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,5 +26,12 @@ public class FilesTestActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Bundle arguments = getIntent().getExtras();
+        assert arguments != null;
+        String autoCompleteTextView = arguments.getString("autoCompleteTextView");
+
+        webView = findViewById(R.id.webView);
+        webView.loadUrl("https://"+autoCompleteTextView);
+
     }
 }

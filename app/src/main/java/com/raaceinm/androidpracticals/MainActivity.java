@@ -28,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         videoView = findViewById(R.id.videoView2);
-
         Vid vid = new Vid(videoView, this);
+
+        Button myButton = findViewById(R.id.button);
+        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+        intent.putExtra("autoCompleteTextView", autoCompleteTextView.getText().toString());
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -37,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button myButton = findViewById(R.id.button);
-        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+
 
         myButton.setOnClickListener(v -> {
             startActivity(intent);
