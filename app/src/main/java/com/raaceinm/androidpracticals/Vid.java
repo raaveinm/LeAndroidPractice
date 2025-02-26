@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Vid {
-    private static final String TAG = "Vid";
+    private static final String TAG = "VID";
     private VideoView videoView;
     private Context context;
 
@@ -68,6 +68,25 @@ public class Vid {
 
         } catch (IOException e) {
             Log.e(TAG, "Error loading video:", e);
+        }
+    }
+
+    public void clearVideoCache() {
+        try {
+            String videoFileName = "background.mp4";
+            File outputFile = new File(context.getCacheDir(), videoFileName);
+
+            if (outputFile.exists()) {
+                if (outputFile.delete()) {
+                    Log.d(TAG, "Video cache cleared");
+                } else {
+                    Log.e(TAG, "Failed to clear video cache.");
+                }
+            } else {
+                Log.d(TAG, "Video cache is already empty.");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error clearing video cache:", e);
         }
     }
 }

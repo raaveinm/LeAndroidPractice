@@ -2,7 +2,9 @@ package com.raaceinm.androidpracticals;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +15,6 @@ import androidx.core.view.WindowInsetsCompat;
 public class FilesTestActivity extends AppCompatActivity {
 
     private static final String TAG = "FilesTestActivity";
-    private WebView webView;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,8 +31,9 @@ public class FilesTestActivity extends AppCompatActivity {
         assert arguments != null;
         String autoCompleteTextView = arguments.getString("autoCompleteTextView");
 
-        webView = findViewById(R.id.webView);
-        webView.loadUrl("https://"+autoCompleteTextView);
+        Log.i(TAG, "Received URL: " + autoCompleteTextView);
+
+        ImageView imageView = findViewById(R.id.imageView);
 
     }
 }

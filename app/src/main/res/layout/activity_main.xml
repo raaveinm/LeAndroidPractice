@@ -23,7 +23,7 @@
         android:id="@+id/TextSection"
         android:layout_width="175dp"
         android:layout_height="20dp"
-        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
         android:background="@drawable/notborder"
         android:text="@string/this_is_first_practical_work"
         android:textAlignment="textEnd"
@@ -39,7 +39,7 @@
         tools:ignore="RtlSymmetry" />
 
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
+        android:id="@+id/completed_sheesh"
         android:layout_width="324dp"
         android:layout_height="wrap_content"
         android:background="@drawable/border"
@@ -63,7 +63,7 @@
         android:layout_height="52dp"
         android:background="@drawable/border"
         android:text="@string/i_want_to_teleport"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:textAlignment="viewStart"
         android:paddingStart="40dp"
 
@@ -72,6 +72,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
+        app:layout_constraintVertical_bias="0.946"
+        tools:ignore="RtlSymmetry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
