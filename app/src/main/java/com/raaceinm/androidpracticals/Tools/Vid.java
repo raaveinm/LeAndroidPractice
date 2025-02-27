@@ -1,7 +1,6 @@
-package com.raaceinm.androidpracticals;
+package com.raaceinm.androidpracticals.Tools;
 
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.VideoView;
@@ -24,11 +23,11 @@ public class Vid {
 
     private void playVideo() {
         try {
-            String videoFileName = "background.mp4";
-            File outputFile = new File(context.getCacheDir(), videoFileName);
+            String backgroundVid = "background.mp4";
+            File outputFile = new File(context.getCacheDir(), backgroundVid);
 
             if (!outputFile.exists()) {
-                InputStream inputStream = context.getAssets().open(videoFileName);
+                InputStream inputStream = context.getAssets().open(backgroundVid);
                 FileOutputStream outputStream = new FileOutputStream(outputFile);
                 byte[] buffer = new byte[1024];
                 int read;
