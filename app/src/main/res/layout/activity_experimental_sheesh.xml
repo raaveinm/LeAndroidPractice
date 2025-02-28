@@ -13,7 +13,8 @@
         android:layout_height="match_parent"
         app:srcCompat="@drawable/back"
 
-        />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-68dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -47,8 +48,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+        app:layout_constraintVertical_bias="0.39" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -99,7 +100,7 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints="username"
@@ -113,6 +114,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
 
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/editTextAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="your age"
+        android:ems="10"
+        android:inputType="number"
+        android:visibility="invisible"
+
+        app:layout_constraintBottom_toTopOf="@+id/Continue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText" />
 
     <Button

@@ -103,8 +103,8 @@
 
     <WebView
         android:id="@+id/webView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="410dp"
+        android:layout_height="689dp"
         android:visibility="gone"
 
         app:layout_constraintBottom_toTopOf="@id/StillDropMe"

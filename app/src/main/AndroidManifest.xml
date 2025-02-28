@@ -17,7 +17,6 @@
         <activity
             android:name=".ExperimentalSheesh"
             android:exported="false"
-            android:label="@string/title_activity_experimental_sheesh"
             android:theme="@style/Theme.AndroidPracticals.NoActionBar" />
         <activity
             android:name=".FilesTestActivity"

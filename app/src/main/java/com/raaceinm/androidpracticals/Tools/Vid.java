@@ -12,22 +12,22 @@ import java.io.InputStream;
 
 public class Vid {
     private static final String TAG = "VID";
-    private VideoView videoView;
-    private Context context;
+    private final VideoView videoView;
+    private final Context context;
+    public String videoFileName;
 
-    public Vid(VideoView videoView, Context context) {
+    public Vid(VideoView videoView, Context context, String videoFileName) {
         this.videoView = videoView;
         this.context = context;
-        playVideo();
+        playVideo(videoFileName);
     }
 
-    private void playVideo() {
+    private void playVideo(String videoFileName) {
         try {
-            String backgroundVid = "background.mp4";
-            File outputFile = new File(context.getCacheDir(), backgroundVid);
+            File outputFile = new File(context.getCacheDir(), videoFileName);
 
             if (!outputFile.exists()) {
-                InputStream inputStream = context.getAssets().open(backgroundVid);
+                InputStream inputStream = context.getAssets().open(videoFileName);
                 FileOutputStream outputStream = new FileOutputStream(outputFile);
                 byte[] buffer = new byte[1024];
                 int read;
@@ -70,9 +70,8 @@ public class Vid {
         }
     }
 
-    public void clearVideoCache() {
+    public void clearVideoCache(String videoFileName) {
         try {
-            String videoFileName = "background.mp4";
             File outputFile = new File(context.getCacheDir(), videoFileName);
 
             if (outputFile.exists()) {

@@ -91,7 +91,7 @@ public class FilesTestActivity extends AppCompatActivity {
     }
 
     protected void onDestroy(){
-        super.onDestroy();
         Log.i(TAG, "onDestroy activity initialized");
+        super.onDestroy();
     }
 }

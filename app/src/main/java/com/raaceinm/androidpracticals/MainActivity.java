@@ -1,12 +1,15 @@
 package com.raaceinm.androidpracticals;
 
-import static android.content.ContentValues.TAG;
+import static android.view.View.GONE;
+import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.LENGTH_SHORT;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
@@ -17,9 +20,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.raaceinm.androidpracticals.Tools.Vid;
 
+import java.util.Objects;
+import java.util.jar.Attributes;
+
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String TAG = "asd";
+    private static final String VideoFileNameDefault = "background.mp4";
+    private static final String VideoFileNameExtra = "IP.mp4";
     private VideoView videoView;
 
     @Override
@@ -30,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         videoView = findViewById(R.id.videoView2);
-        Vid vid = new Vid(videoView, this);
+        Vid vid = new Vid(videoView, this,VideoFileNameDefault);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -47,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         dropMeButton.setOnClickListener(v -> {
 
+            Toast.makeText(this,"achtung",LENGTH_SHORT).show();
+
             AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);
             String inputtedURL = autoCompleteTextView.getText().toString();
 
@@ -58,38 +68,62 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    protected void onPause(){
-        super.onPause();
-        Log.i(TAG, "onPause activity initialized");
-    }
-
 
     protected void onResume(){
         super.onResume();
         Log.i(TAG, "onResume activity initialized");
+
+        Bundle arguments = getIntent().getExtras();
+
+        if (arguments != null) {
+
+            String name = Objects.requireNonNull(arguments).getString("Name");
+            Log.i(TAG, "Received Name: " + name);
+
+            if (name != null) {
+                videoView = findViewById(R.id.videoView2);
+                Vid vid = new Vid(videoView, this, VideoFileNameDefault);
+                vid.clearVideoCache(VideoFileNameDefault);
+
+                Vid vidExtra = new Vid(videoView, this, VideoFileNameExtra);
+            } else {
+                videoView = findViewById(R.id.videoView2);
+                Vid vid = new Vid(videoView, this, VideoFileNameDefault);
+            }
+            AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);
+            autoCompleteTextView.setVisibility(GONE);
+
+            Toast.makeText(this, "data has been stolen successful, dear " + name, LENGTH_LONG).show();
+        }else{
+            return;
+        }
+    }
+
+    protected void onPause(){
+        super.onPause();
+        Log.i(TAG, "onPause activity initialized");
     }
 
     protected void onStop(){
         super.onStop();
         Log.i(TAG, "onStop activity initialized");
 
-        Vid vid = new Vid(videoView, this);
-        vid.clearVideoCache();
+        Vid vid = new Vid(videoView, this,VideoFileNameDefault);
+        vid.clearVideoCache(VideoFileNameDefault);
     }
 
     protected void onRestart(){
         super.onRestart();
         Log.i(TAG, "onRestart activity initialized");
-
-        videoView = findViewById(R.id.videoView2);
-        Vid vid = new Vid(videoView, this);
     }
 
     protected void onDestroy(){
         super.onDestroy();
         Log.i(TAG, "onDestroy activity initialized");
 
-        Vid vid = new Vid(videoView, this);
-        vid.clearVideoCache();
+        Vid vidDefault = new Vid(videoView, this,VideoFileNameDefault);
+        vidDefault.clearVideoCache(VideoFileNameDefault);
+        Vid vidExtra = new Vid(videoView, this,VideoFileNameDefault);
+        vidExtra.clearVideoCache(VideoFileNameExtra);
     }
 }

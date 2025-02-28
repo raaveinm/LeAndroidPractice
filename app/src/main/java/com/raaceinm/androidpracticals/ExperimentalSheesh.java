@@ -1,6 +1,15 @@
 package com.raaceinm.androidpracticals;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +17,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.w3c.dom.Text;
+
 public class ExperimentalSheesh extends AppCompatActivity {
+    int amountOfContinues = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +32,136 @@ public class ExperimentalSheesh extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    @SuppressLint({"SetTextI18n", "ResourceType"})
+    protected void onStart(){
+        super.onStart();
+
+        Button hellYeah = findViewById(R.id.hlYeah);
+        Button cContinue = findViewById(R.id.Continue);
+
+        ImageView background = findViewById(R.id.imageView4);
+
+        TextView textPhone = findViewById(R.id.editTextPhone);
+        TextView textEmail = findViewById(R.id.editTextTextEmailAddress);
+        TextView textPassword = findViewById(R.id.editTextTextPassword);
+        TextView textName = findViewById(R.id.editTextName);
+        TextView textAge = findViewById(R.id.editTextAge);
+
+        hellYeah.setOnClickListener(v->{
+            hellYeah.setVisibility(GONE);
+            cContinue.setVisibility(VISIBLE);
+        });
+
+        cContinue.setOnClickListener(v->{
+            switch (amountOfContinues){
+                case 0: {
+                    background.setImageResource(R.drawable.darkbackground);
+                    textPhone.setVisibility(VISIBLE);
+                    cContinue.setText("Continue");
+                    amountOfContinues++;
+                    break;
+                }
+                case 1: {
+                    String phoneNumber = textPhone.getText().toString();
+                    if (phoneNumber.equals("")) {
+                        Toast.makeText(this, "NONONO", Toast.LENGTH_SHORT).show();
+                        break;
+                    } else if (phoneNumber.equals("999")) {
+                        textEmail.setVisibility(VISIBLE);
+                        textPassword.setVisibility(VISIBLE);
+                        textName.setVisibility(VISIBLE);
+                        textAge.setVisibility(VISIBLE);
+                        textEmail.setText("examplemail.gmail.com");
+                        textPassword.setText("ADMINSUPERPASSWORD");
+                        textName.setText("Admin");
+                        textAge.setText("21");
+                        cContinue.setText("Done");
+                        amountOfContinues = 5;
+                        break;
+                    } else {
+                        textEmail.setVisibility(VISIBLE);
+                        amountOfContinues++;
+                        break;
+                    }
+                }
+                case 2: {
+                    if (textEmail.getText().toString().equals("")){
+                        Toast.makeText(this, "NONONO", Toast.LENGTH_SHORT).show();
+                        break;
+                    }else {
+                        textPassword.setVisibility(VISIBLE);
+                        amountOfContinues++;
+                        break;
+                    }
+                }
+                case 3: {
+                    if (textPassword.getText().toString().equals("")){
+                        Toast.makeText(this, "NONONO", Toast.LENGTH_SHORT).show();
+                        break;
+                    }else {
+                        textName.setVisibility(VISIBLE);
+                        amountOfContinues++;
+                        break;
+                    }
+                }
+                case 4: {
+                    if (textName.getText().toString().equals("")) {
+                        Toast.makeText(this, "NONONO", Toast.LENGTH_SHORT).show();
+                        break;
+                    } else {
+                        textAge.setVisibility(VISIBLE);
+                        cContinue.setText("Done");
+                        amountOfContinues++;
+                        break;
+                    }
+                }
+                case 5:{
+                    if (textAge.getText().toString().equals("")){
+                        Toast.makeText(this, "NONONO", Toast.LENGTH_SHORT).show();
+                        break;
+                    }else{
+                        Intent intent = new Intent(this, MainActivity.class);
+                        intent.putExtra("Phone", Float.parseFloat(textPhone.getText().toString()));
+                        intent.putExtra("Email", textEmail.getText().toString());
+                        intent.putExtra("Password", textPassword.getText().toString());
+                        intent.putExtra("Name", textName.getText().toString());
+                        intent.putExtra("Age", Integer.parseInt(textAge.getText().toString()));
+
+                        textPhone.setVisibility(GONE);
+                        textEmail.setVisibility(GONE);
+                        textPassword.setVisibility(GONE);
+                        textName.setVisibility(GONE);
+                        textAge.setVisibility(GONE);
+
+
+                        startActivity(intent);
+                    }
+                }
+                default:
+                    Toast.makeText(this, "GG", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    protected void onPause(){
+        super.onPause();
+    }
+
+    protected void onResume(){
+        super.onResume();
+    }
+
+    protected void onStop(){
+        super.onStop();
+    }
+
+    protected void onRestart(){
+        super.onRestart();
+    }
+
+    protected void onDestroy(){
+        super.onDestroy();
     }
 }

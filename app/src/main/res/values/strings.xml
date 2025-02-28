@@ -5,5 +5,5 @@
     <string name="completed_sheesh">gemini.google.com</string>
     <string name="error_accessing_file">Error accessing file</string>
     <string name="drop">Drop</string>
-    <string name="toContinue">Continue</string>>
+    <string name="toContinue">Start</string>
 </resources>
