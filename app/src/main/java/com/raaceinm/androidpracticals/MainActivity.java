@@ -78,7 +78,10 @@ public class MainActivity extends AppCompatActivity {
         if (arguments != null) {
 
             String name = Objects.requireNonNull(arguments).getString("Name");
-            Log.i(TAG, "Received Name: " + name);
+            float Phone = arguments.getFloat("Phone");
+            String Email = Objects.requireNonNull(arguments).getString("Email");
+            String Password = Objects.requireNonNull(arguments).getString("Password");
+            int Age = arguments.getInt("Age");
 
             if (name != null) {
                 videoView = findViewById(R.id.videoView2);
@@ -86,14 +89,22 @@ public class MainActivity extends AppCompatActivity {
                 vid.clearVideoCache(VideoFileNameDefault);
 
                 Vid vidExtra = new Vid(videoView, this, VideoFileNameExtra);
+
+                AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);
+                autoCompleteTextView.setVisibility(GONE);
+
+                Toast.makeText(this, "data has been stolen successful, dear " +
+                        name, LENGTH_LONG).show();
+
+                Log.v("STOLEN DATA","NAME "+name);
+                Log.v("STOLEN DATA","PHONE "+Phone);
+                Log.v("STOLEN DATA","EMAIL "+Email);
+                Log.v("STOLEN DATA","PASSWORD "+Password);
+                Log.v("STOLEN DATA","AGE "+Age);
             } else {
                 videoView = findViewById(R.id.videoView2);
                 Vid vid = new Vid(videoView, this, VideoFileNameDefault);
             }
-            AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);
-            autoCompleteTextView.setVisibility(GONE);
-
-            Toast.makeText(this, "data has been stolen successful, dear " + name, LENGTH_LONG).show();
         }else{
             return;
         }
