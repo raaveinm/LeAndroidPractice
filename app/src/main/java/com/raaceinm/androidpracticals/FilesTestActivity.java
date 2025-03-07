@@ -1,21 +1,18 @@
 package com.raaceinm.androidpracticals;
 
-import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentContainerView;
 
 public class FilesTestActivity extends AppCompatActivity {
     boolean webViewReleased = false;
@@ -36,30 +33,9 @@ public class FilesTestActivity extends AppCompatActivity {
     }
 
     protected void onStart(){
-        super.onStart();
+
         Log.i(TAG, "onStart activity initialized");
-
-
-        ImageView thirdImage = findViewById(R.id.imageView3);
-        Button dropMeButton = findViewById(R.id.StillDropMe);
-        WebView webView = findViewById(R.id.webView);
-
-        Bundle arguments = getIntent().getExtras();
-        assert arguments != null;
-        String autoCompleteTextView = arguments.getString("autoCompleteTextView");
-
-        Log.i(TAG, "Received URL: " + autoCompleteTextView);
-
-        dropMeButton.setOnClickListener(v->{
-            if (!webViewReleased){
-                webViewReleased = true;
-                webView.setVisibility(View.VISIBLE);
-                webView.loadUrl("https://"+autoCompleteTextView);
-            }else{
-                webView.setVisibility(View.GONE);
-                webViewReleased = false;
-            }
-        });
+        super.onStart();
     }
 
     protected void onPause(){
@@ -82,10 +58,6 @@ public class FilesTestActivity extends AppCompatActivity {
         super.onRestart();
         Log.i(TAG, "onRestart activity initialized");
 
-        WebView webView = findViewById(R.id.webView);
-        webView.setVisibility(View.GONE);
-        webViewReleased = false;
-
         Intent intent = new Intent(this, ExperimentalSheesh.class);
         startActivity(intent);
     }
@@ -93,5 +65,35 @@ public class FilesTestActivity extends AppCompatActivity {
     protected void onDestroy(){
         Log.i(TAG, "onDestroy activity initialized");
         super.onDestroy();
+    }
+
+    public void PerformLinearLayout(View view){
+        FragmentContainerView linearLayout = findViewById(R.id.ShowLinearLayout);
+        FragmentContainerView frameLayout = findViewById(R.id.ShowFrameLayout);
+        ScrollView scrollView = findViewById(R.id.scrollView);
+
+        scrollView.setVisibility(View.GONE);
+        frameLayout.setVisibility(View.GONE);
+        linearLayout.setVisibility(View.VISIBLE);
+    }
+
+    public void PerformFrameLayout(View view){
+        FragmentContainerView linearLayout = findViewById(R.id.ShowLinearLayout);
+        FragmentContainerView frameLayout = findViewById(R.id.ShowFrameLayout);
+        ScrollView scrollView = findViewById(R.id.scrollView);
+
+        scrollView.setVisibility(View.GONE);
+        frameLayout.setVisibility(View.VISIBLE);
+        linearLayout.setVisibility(View.GONE);
+    }
+
+    public void backToScroll(View view){
+        FragmentContainerView linearLayout = findViewById(R.id.ShowLinearLayout);
+        FragmentContainerView frameLayout = findViewById(R.id.ShowFrameLayout);
+        ScrollView scrollView = findViewById(R.id.scrollView);
+
+        scrollView.setVisibility(View.VISIBLE);
+        frameLayout.setVisibility(View.GONE);
+        linearLayout.setVisibility(View.GONE);
     }
 }

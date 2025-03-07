@@ -1,9 +1,45 @@
-<resources>
-    <string name="app_name">redir</string>
-    <string name="this_is_first_practical_work">Practice Num 2</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">redir</string>
+    <string name="this_is_first_practical_work" translatable="false">Practice Num 2</string>
     <string name="i_want_to_teleport">Drop me</string>
     <string name="completed_sheesh">gemini.google.com</string>
     <string name="error_accessing_file">Error accessing file</string>
-    <string name="drop">Drop</string>
+    <string name="droplinear">drop to linear layout</string>
+    <string name="dropframe">drop to frame layout</string>
     <string name="toContinue">Start</string>
+    <string name="introduction">Large Language Models (LLMs) operate through a complex interplay of statistical modeling, neural network architectures, and massive datasets. Their functionality can be broadly dissected into the following core components:</string>
+    <string name="core_text">
+        <b>1. Tokenization and Embedding:</b> Input text is initially decomposed into smaller units called tokens.
+        These tokens can represent words, sub-words, or even individual characters, depending on the specific model\'s vocabulary.
+        Each token is then mapped to a high-dimensional vector, known as an embedding. This embedding represents the token\'s semantic meaning and contextual relationships with other tokens, learned during the training phase.
+        The embedding space is a continuous vector space where semantically similar tokens cluster together.
+        \n\n<b>2. Transformer Architecture:</b> The dominant architecture underpinning modern LLMs is the Transformer.
+        Unlike recurrent neural networks (RNNs), which process text sequentially, the Transformer employs a mechanism called "self-attention."
+        Self-attention allows the model to weigh the importance of different tokens within a sequence relative to each other, regardless of their position in the sequence.
+        This enables the model to capture long-range dependencies and contextual nuances within the text far more effectively than RNNs.
+        The Transformer architecture typically consists of multiple stacked "layers." Each layer comprises two sub-layers: a multi-head self-attention mechanism and a feed-forward neural network.
+        \n\n<b>3. Multi-Head Self-Attention:</b> Within each self-attention layer, the input embeddings are linearly projected into three separate matrices: Query (Q), Key (K), and Value (V).
+        Attention scores are computed by taking the dot product of the Query matrix with the transpose of the Key matrix.
+        These scores are then scaled and normalized using a softmax function, producing a probability distribution that represents the attention weights assigned to each token.
+        These weights determine the influence each token has on the representation of every other token in the sequence.
+        The "multi-head" aspect refers to performing this process multiple times with different learned linear projections, allowing the model to capture different aspects of the relationships between tokens.
+        The outputs of each "head" are then concatenated and linearly projected again.
+        \n\n<b>4. Feed-Forward Network:</b> Following the self-attention mechanism, each token\'s representation is passed through a position-wise feed-forward neural network.
+        This network typically consists of two linear transformations with a non-linear activation function (e.g., ReLU or GeLU) in between.
+        This component adds further non-linearity and allows the model to learn more complex representations.
+        \n\n<b>5. Layer Stacking and Residual Connections:</b> Multiple Transformer layers are stacked sequentially.
+        Each layer refines the representation of the tokens, building upon the context and relationships captured by previous layers.
+        Residual connections (adding the input of a layer to its output) and layer normalization are employed to improve training stability and gradient flow, allowing for the training of very deep networks.
+        \n\n<b>6. Pre-training and Fine-tuning:</b> LLMs are typically trained in two phases.
+        Pre-training involves training the model on a massive dataset of text and code, often scraped from the internet.
+        The model learns to predict the next token in a sequence (autoregressive language modeling) or to reconstruct masked tokens (masked language modeling).
+        This phase allows the model to learn general-purpose language representations and statistical patterns in the data.
+        Fine-tuning adapts the pre-trained model to a specific downstream task, such as text generation, translation, or question answering.
+        This is done by training the model on a smaller, task-specific dataset.
+        \n\n<b>7. Output Generation:</b> During inference (text generation), the model processes an input prompt (a sequence of tokens).
+        The model\'s output is a probability distribution over its entire vocabulary, representing the likelihood of each token being the next token in the sequence.
+        A decoding algorithm (e.g., greedy decoding, beam search, top-k sampling) is then used to select the most probable sequence of tokens to generate the output text.
+        The model generates text one token at a time, conditioning each new token on the previously generated tokens and the input prompt.
+        The final output is constructed token-by-token, using the context generated up to that point to inform all subsequent generation.
+    </string>
 </resources>

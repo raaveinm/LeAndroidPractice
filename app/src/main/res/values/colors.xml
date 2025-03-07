@@ -8,4 +8,14 @@
     <color name="green">#FF00FF00</color>
     <color name="blue">#FF0000FF</color>
     <color name="yellow">#FFEB3B</color>
+
+    <color name="bckgrnd_dark">#1f1f1f</color>
+    <color name="bckgrnd_light">#eddfd5</color>
+
+    <color name="text_dark">#c1c1c1</color>
+    <color name="text_light">#1d1d1d</color>
+
+    <color name="button_dark">#8d0000</color>
+    <color name="button_light">#ff7124</color>
+
 </resources>

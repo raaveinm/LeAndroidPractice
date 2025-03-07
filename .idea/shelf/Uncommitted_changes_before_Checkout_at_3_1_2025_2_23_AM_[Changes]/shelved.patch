@@ -1,0 +1,175 @@
+Index: app/src/main/java/com/raaceinm/androidpracticals/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.raaceinm.androidpracticals;\r\n\r\nimport static android.view.View.GONE;\r\nimport static android.widget.Toast.LENGTH_LONG;\r\nimport static android.widget.Toast.LENGTH_SHORT;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.widget.AutoCompleteTextView;\r\nimport android.widget.Button;\r\nimport android.widget.Toast;\r\nimport android.widget.VideoView;\r\n\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport com.raaceinm.androidpracticals.Tools.Vid;\r\n\r\nimport java.util.Objects;\r\nimport java.util.jar.Attributes;\r\n\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n    private static final String TAG = \"asd\";\r\n    private static final String VideoFileNameDefault = \"background.mp4\";\r\n    private static final String VideoFileNameExtra = \"IP.mp4\";\r\n    private VideoView videoView;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        Log.i(TAG, \"onCreate activity initialized\");\r\n        EdgeToEdge.enable(this);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        videoView = findViewById(R.id.videoView2);\r\n        Vid vid = new Vid(videoView, this,VideoFileNameDefault);\r\n\r\n        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n        });\r\n    }\r\n\r\n    protected void onStart(){\r\n        super.onStart();\r\n        Log.i(TAG, \"onStart activity initialized\");\r\n\r\n        Button dropMeButton = findViewById(R.id.button);\r\n\r\n        dropMeButton.setOnClickListener(v -> {\r\n\r\n            Toast.makeText(this,\"achtung\",LENGTH_SHORT).show();\r\n\r\n            AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);\r\n            String inputtedURL = autoCompleteTextView.getText().toString();\r\n\r\n            Log.i(TAG, \"Inputted URL: \" + inputtedURL);\r\n\r\n            Intent intent = new Intent(this, FilesTestActivity.class);\r\n            intent.putExtra(\"autoCompleteTextView\", inputtedURL);\r\n            startActivity(intent);\r\n        });\r\n    }\r\n\r\n\r\n    protected void onResume(){\r\n        super.onResume();\r\n        Log.i(TAG, \"onResume activity initialized\");\r\n\r\n        Bundle arguments = getIntent().getExtras();\r\n\r\n        if (arguments != null) {\r\n\r\n            String name = Objects.requireNonNull(arguments).getString(\"Name\");\r\n            float Phone = arguments.getFloat(\"Phone\");\r\n            String Email = Objects.requireNonNull(arguments).getString(\"Email\");\r\n            String Password = Objects.requireNonNull(arguments).getString(\"Password\");\r\n            int Age = arguments.getInt(\"Age\");\r\n\r\n            if (name != null) {\r\n                videoView = findViewById(R.id.videoView2);\r\n                Vid vid = new Vid(videoView, this, VideoFileNameDefault);\r\n                vid.clearVideoCache(VideoFileNameDefault);\r\n\r\n                Vid vidExtra = new Vid(videoView, this, VideoFileNameExtra);\r\n\r\n                AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);\r\n                autoCompleteTextView.setVisibility(GONE);\r\n\r\n                Toast.makeText(this, \"data has been stolen successful, dear \" +\r\n                        name, LENGTH_LONG).show();\r\n\r\n                Log.v(\"STOLEN DATA\",\"NAME \"+name);\r\n                Log.v(\"STOLEN DATA\",\"PHONE \"+Phone);\r\n                Log.v(\"STOLEN DATA\",\"EMAIL \"+Email);\r\n                Log.v(\"STOLEN DATA\",\"PASSWORD \"+Password);\r\n                Log.v(\"STOLEN DATA\",\"AGE \"+Age);\r\n            } else {\r\n                videoView = findViewById(R.id.videoView2);\r\n                Vid vid = new Vid(videoView, this, VideoFileNameDefault);\r\n            }\r\n        }else{\r\n            return;\r\n        }\r\n    }\r\n\r\n    protected void onPause(){\r\n        super.onPause();\r\n        Log.i(TAG, \"onPause activity initialized\");\r\n    }\r\n\r\n    protected void onStop(){\r\n        super.onStop();\r\n        Log.i(TAG, \"onStop activity initialized\");\r\n\r\n        Vid vid = new Vid(videoView, this,VideoFileNameDefault);\r\n        vid.clearVideoCache(VideoFileNameDefault);\r\n    }\r\n\r\n    protected void onRestart(){\r\n        super.onRestart();\r\n        Log.i(TAG, \"onRestart activity initialized\");\r\n    }\r\n\r\n    protected void onDestroy(){\r\n        super.onDestroy();\r\n        Log.i(TAG, \"onDestroy activity initialized\");\r\n\r\n        Vid vidDefault = new Vid(videoView, this,VideoFileNameDefault);\r\n        vidDefault.clearVideoCache(VideoFileNameDefault);\r\n        Vid vidExtra = new Vid(videoView, this,VideoFileNameDefault);\r\n        vidExtra.clearVideoCache(VideoFileNameExtra);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/raaceinm/androidpracticals/MainActivity.java b/app/src/main/java/com/raaceinm/androidpracticals/MainActivity.java
+--- a/app/src/main/java/com/raaceinm/androidpracticals/MainActivity.java	(revision 4b4d5d2ed8ec5fea4134ff3a4eb6724f7caa7563)
++++ b/app/src/main/java/com/raaceinm/androidpracticals/MainActivity.java	(date 1740783756113)
+@@ -33,7 +33,7 @@
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-        Log.i(TAG, "onCreate activity initialized");
++        Log.d(TAG, "onCreate activity initialized");
+         EdgeToEdge.enable(this);
+         setContentView(R.layout.activity_main);
+ 
+@@ -49,7 +49,7 @@
+ 
+     protected void onStart(){
+         super.onStart();
+-        Log.i(TAG, "onStart activity initialized");
++        Log.d(TAG, "onStart activity initialized");
+ 
+         Button dropMeButton = findViewById(R.id.button);
+ 
+@@ -71,7 +71,7 @@
+ 
+     protected void onResume(){
+         super.onResume();
+-        Log.i(TAG, "onResume activity initialized");
++        Log.d(TAG, "onResume activity initialized");
+ 
+         Bundle arguments = getIntent().getExtras();
+ 
+@@ -112,29 +112,26 @@
+ 
+     protected void onPause(){
+         super.onPause();
+-        Log.i(TAG, "onPause activity initialized");
++        Log.d(TAG, "onPause activity initialized");
+     }
+ 
+     protected void onStop(){
+         super.onStop();
+-        Log.i(TAG, "onStop activity initialized");
+-
+-        Vid vid = new Vid(videoView, this,VideoFileNameDefault);
+-        vid.clearVideoCache(VideoFileNameDefault);
+-    }
+-
+-    protected void onRestart(){
+-        super.onRestart();
+-        Log.i(TAG, "onRestart activity initialized");
+-    }
+-
+-    protected void onDestroy(){
+-        super.onDestroy();
+-        Log.i(TAG, "onDestroy activity initialized");
++        Log.d(TAG, "onStop activity initialized");
+ 
+         Vid vidDefault = new Vid(videoView, this,VideoFileNameDefault);
+         vidDefault.clearVideoCache(VideoFileNameDefault);
+         Vid vidExtra = new Vid(videoView, this,VideoFileNameDefault);
+         vidExtra.clearVideoCache(VideoFileNameExtra);
+     }
++
++    protected void onRestart(){
++        super.onRestart();
++        Log.d(TAG, "onRestart activity initialized");
++    }
++
++    protected void onDestroy(){
++        super.onDestroy();
++        Log.d(TAG, "onDestroy activity initialized");
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/raaceinm/androidpracticals/Tools/IPAddressGenerator.java
+===================================================================
+diff --git a/app/src/main/java/com/raaceinm/androidpracticals/Tools/IPAddressGenerator.java b/app/src/main/java/com/raaceinm/androidpracticals/Tools/ExtFun.java
+rename from app/src/main/java/com/raaceinm/androidpracticals/Tools/IPAddressGenerator.java
+rename to app/src/main/java/com/raaceinm/androidpracticals/Tools/ExtFun.java
+--- a/app/src/main/java/com/raaceinm/androidpracticals/Tools/IPAddressGenerator.java	(revision 4b4d5d2ed8ec5fea4134ff3a4eb6724f7caa7563)
++++ b/app/src/main/java/com/raaceinm/androidpracticals/Tools/ExtFun.java	(date 1740783048863)
+@@ -1,8 +1,18 @@
+ package com.raaceinm.androidpracticals.Tools;
+ 
++import static androidx.core.content.ContextCompat.startActivity;
++
++import android.content.Context;
++import android.content.Intent;
++import android.view.View;
++
++import com.raaceinm.androidpracticals.ExperimentalSheesh;
++import com.raaceinm.androidpracticals.MainActivity;
++import com.raaceinm.androidpracticals.R;
++
+ import java.util.Random;
+ 
+-public class IPAddressGenerator {
++public class ExtFun {
+     public static String generateRandomIPv4() {
+         Random random = new Random();
+         StringBuilder ipAddress = new StringBuilder();
+@@ -13,7 +23,6 @@
+                 ipAddress.append(".");
+             }
+         }
+-
+         return ipAddress.toString();
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/raaceinm/androidpracticals/ExperimentalSheesh.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.raaceinm.androidpracticals;\r\n\r\nimport static android.view.View.GONE;\r\nimport static android.view.View.VISIBLE;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.widget.Button;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport org.w3c.dom.Text;\r\n\r\npublic class ExperimentalSheesh extends AppCompatActivity {\r\n    int amountOfContinues = 0;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        EdgeToEdge.enable(this);\r\n        setContentView(R.layout.activity_experimental_sheesh);\r\n        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n        });\r\n    }\r\n\r\n    @SuppressLint({\"SetTextI18n\", \"ResourceType\"})\r\n    protected void onStart(){\r\n        super.onStart();\r\n\r\n        Button hellYeah = findViewById(R.id.hlYeah);\r\n        Button cContinue = findViewById(R.id.Continue);\r\n\r\n        ImageView background = findViewById(R.id.imageView4);\r\n\r\n        TextView textPhone = findViewById(R.id.editTextPhone);\r\n        TextView textEmail = findViewById(R.id.editTextTextEmailAddress);\r\n        TextView textPassword = findViewById(R.id.editTextTextPassword);\r\n        TextView textName = findViewById(R.id.editTextName);\r\n        TextView textAge = findViewById(R.id.editTextAge);\r\n\r\n        hellYeah.setOnClickListener(v->{\r\n            hellYeah.setVisibility(GONE);\r\n            cContinue.setVisibility(VISIBLE);\r\n        });\r\n\r\n        cContinue.setOnClickListener(v->{\r\n            switch (amountOfContinues){\r\n                case 0: {\r\n                    background.setImageResource(R.drawable.darkbackground);\r\n                    textPhone.setVisibility(VISIBLE);\r\n                    cContinue.setText(\"Continue\");\r\n                    amountOfContinues++;\r\n                    break;\r\n                }\r\n                case 1: {\r\n                    String phoneNumber = textPhone.getText().toString();\r\n                    if (phoneNumber.equals(\"\")) {\r\n                        Toast.makeText(this, \"NONONO\", Toast.LENGTH_SHORT).show();\r\n                        break;\r\n                    } else if (phoneNumber.equals(\"999\")) {\r\n                        textEmail.setVisibility(VISIBLE);\r\n                        textPassword.setVisibility(VISIBLE);\r\n                        textName.setVisibility(VISIBLE);\r\n                        textAge.setVisibility(VISIBLE);\r\n                        textEmail.setText(\"examplemail.gmail.com\");\r\n                        textPassword.setText(\"ADMINSUPERPASSWORD\");\r\n                        textName.setText(\"Admin\");\r\n                        textAge.setText(\"21\");\r\n                        cContinue.setText(\"Done\");\r\n                        amountOfContinues = 5;\r\n                        break;\r\n                    } else {\r\n                        textEmail.setVisibility(VISIBLE);\r\n                        amountOfContinues++;\r\n                        break;\r\n                    }\r\n                }\r\n                case 2: {\r\n                    if (textEmail.getText().toString().equals(\"\")){\r\n                        Toast.makeText(this, \"NONONO\", Toast.LENGTH_SHORT).show();\r\n                        break;\r\n                    }else {\r\n                        textPassword.setVisibility(VISIBLE);\r\n                        amountOfContinues++;\r\n                        break;\r\n                    }\r\n                }\r\n                case 3: {\r\n                    if (textPassword.getText().toString().equals(\"\")){\r\n                        Toast.makeText(this, \"NONONO\", Toast.LENGTH_SHORT).show();\r\n                        break;\r\n                    }else {\r\n                        textName.setVisibility(VISIBLE);\r\n                        amountOfContinues++;\r\n                        break;\r\n                    }\r\n                }\r\n                case 4: {\r\n                    if (textName.getText().toString().equals(\"\")) {\r\n                        Toast.makeText(this, \"NONONO\", Toast.LENGTH_SHORT).show();\r\n                        break;\r\n                    } else {\r\n                        textAge.setVisibility(VISIBLE);\r\n                        cContinue.setText(\"Done\");\r\n                        amountOfContinues++;\r\n                        break;\r\n                    }\r\n                }\r\n                case 5:{\r\n                    if (textAge.getText().toString().equals(\"\")){\r\n                        Toast.makeText(this, \"NONONO\", Toast.LENGTH_SHORT).show();\r\n                        break;\r\n                    }else{\r\n                        Intent intent = new Intent(this, MainActivity.class);\r\n                        intent.putExtra(\"Phone\", Float.parseFloat(textPhone.getText().toString()));\r\n                        intent.putExtra(\"Email\", textEmail.getText().toString());\r\n                        intent.putExtra(\"Password\", textPassword.getText().toString());\r\n                        intent.putExtra(\"Name\", textName.getText().toString());\r\n                        intent.putExtra(\"Age\", Integer.parseInt(textAge.getText().toString()));\r\n\r\n                        textPhone.setVisibility(GONE);\r\n                        textEmail.setVisibility(GONE);\r\n                        textPassword.setVisibility(GONE);\r\n                        textName.setVisibility(GONE);\r\n                        textAge.setVisibility(GONE);\r\n\r\n\r\n                        startActivity(intent);\r\n                    }\r\n                }\r\n                default:\r\n                    Toast.makeText(this, \"GG\", Toast.LENGTH_SHORT).show();\r\n            }\r\n        });\r\n    }\r\n\r\n    protected void onPause(){\r\n        super.onPause();\r\n    }\r\n\r\n    protected void onResume(){\r\n        super.onResume();\r\n    }\r\n\r\n    protected void onStop(){\r\n        super.onStop();\r\n    }\r\n\r\n    protected void onRestart(){\r\n        super.onRestart();\r\n    }\r\n\r\n    protected void onDestroy(){\r\n        super.onDestroy();\r\n    }\r\n}
+===================================================================
+diff --git a/app/src/main/java/com/raaceinm/androidpracticals/ExperimentalSheesh.java b/app/src/main/java/com/raaceinm/androidpracticals/ExperimentalSheesh.java
+--- a/app/src/main/java/com/raaceinm/androidpracticals/ExperimentalSheesh.java	(revision 4b4d5d2ed8ec5fea4134ff3a4eb6724f7caa7563)
++++ b/app/src/main/java/com/raaceinm/androidpracticals/ExperimentalSheesh.java	(date 1740783048859)
+@@ -6,6 +6,7 @@
+ import android.annotation.SuppressLint;
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.view.View;
+ import android.widget.Button;
+ import android.widget.ImageView;
+ import android.widget.TextView;
+@@ -77,8 +78,8 @@
+                         textPassword.setText("ADMINSUPERPASSWORD");
+                         textName.setText("Admin");
+                         textAge.setText("21");
+-                        cContinue.setText("Done");
+-                        amountOfContinues = 5;
++                        cContinue.setText("ADMIN BUTTON");
++                        amountOfContinues = 6;
+                         break;
+                     } else {
+                         textEmail.setVisibility(VISIBLE);
+@@ -139,6 +140,12 @@
+                         startActivity(intent);
+                     }
+                 }
++
++                case 6:
++                    DeclarativeTransmission(v, Float.parseFloat(textPhone.getText().toString()),
++                            textEmail.getText().toString(), textPassword.getText().toString(),
++                            textName.getText().toString(), Integer.parseInt(textAge.getText().toString()));
++                    break;
+                 default:
+                     Toast.makeText(this, "GG", Toast.LENGTH_SHORT).show();
+             }
+@@ -164,4 +171,17 @@
+     protected void onDestroy(){
+         super.onDestroy();
+     }
++
++    private void DeclarativeTransmission(View view, Float phone, String email,
++                                         String password, String name, Integer age) {
++        Intent intent = new Intent(this, MainActivity.class);
++
++        intent.putExtra("Phone", phone);
++        intent.putExtra("Email", email);
++        intent.putExtra("Password", password);
++        intent.putExtra("Name", name);
++        intent.putExtra("Age", age);
++
++        startActivity(intent);
++    }
+ }
+\ No newline at end of file

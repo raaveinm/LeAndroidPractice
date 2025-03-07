@@ -17,6 +17,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.raaceinm.androidpracticals.Tools.Sterilization;
+
 import org.w3c.dom.Text;
 
 public class ExperimentalSheesh extends AppCompatActivity {
@@ -122,25 +125,29 @@ public class ExperimentalSheesh extends AppCompatActivity {
                         Toast.makeText(this, "NONONO", Toast.LENGTH_SHORT).show();
                         break;
                     }else{
+                        Sterilization personalData = new Sterilization(
+                                Float.parseFloat(textPhone.getText().toString()),
+                                textEmail.getText().toString(),
+                                textPassword.getText().toString(),
+                                textName.getText().toString(),
+                                Integer.parseInt(textAge.getText().toString()));
+
                         Intent intent = new Intent(this, MainActivity.class);
+                        intent.putExtra("Sterilization", personalData);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+
+                        /*
                         intent.putExtra("Phone", Float.parseFloat(textPhone.getText().toString()));
                         intent.putExtra("Email", textEmail.getText().toString());
                         intent.putExtra("Password", textPassword.getText().toString());
                         intent.putExtra("Name", textName.getText().toString());
                         intent.putExtra("Age", Integer.parseInt(textAge.getText().toString()));
-
-                        textPhone.setVisibility(GONE);
-                        textEmail.setVisibility(GONE);
-                        textPassword.setVisibility(GONE);
-                        textName.setVisibility(GONE);
-                        textAge.setVisibility(GONE);
-
-
-                        startActivity(intent);
+                        */
                     }
                 }
                 default:
-                    Toast.makeText(this, "GG", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.main), "GG", Snackbar.LENGTH_SHORT).show();
             }
         });
     }
