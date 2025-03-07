@@ -1,19 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.AndroidPracticals" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="backgroundColor">@color/bckgrnd_light</item>
         <item name="textColor">@color/text_light</item>
         <item name="buttonColor">@color/button_light</item>
     </style>
-
-    <style name="Theme.AndroidPracticals" parent="Base.Theme.AndroidPracticals" />
-
-    <style name="Theme.AndroidPracticals.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.AndroidPracticals.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.AndroidPracticals.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -1,5 +1,8 @@
 package com.raaceinm.androidpracticals;
 
+import static android.content.Intent.getIntent;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.raaceinm.androidpracticals.Tools.Sterilization;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,9 +29,7 @@ public class FrameLayout extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FrameLayout() {
-        // Required empty public constructor
-    }
+    public FrameLayout() {}
 
     /**
      * Use this factory method to create a new instance of
@@ -61,4 +64,6 @@ public class FrameLayout extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_frame_layout, container, false);
     }
+
+
 }

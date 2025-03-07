@@ -18,10 +18,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.raaceinm.androidpracticals.Tools.Sterilization;
 import com.raaceinm.androidpracticals.Tools.Vid;
-
-import java.util.Objects;
-import java.util.jar.Attributes;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -72,16 +70,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         Log.i(TAG, "onResume activity initialized");
-
+        Sterilization personalData = (Sterilization)getIntent().getSerializableExtra("Sterilization");
         Bundle arguments = getIntent().getExtras();
 
         if (arguments != null) {
 
-            String name = Objects.requireNonNull(arguments).getString("Name");
-            float Phone = arguments.getFloat("Phone");
-            String Email = Objects.requireNonNull(arguments).getString("Email");
-            String Password = Objects.requireNonNull(arguments).getString("Password");
-            int Age = arguments.getInt("Age");
+            assert personalData != null;
+
+            Float Phone = personalData.getPhone();
+            String Email = personalData.getEmail();
+            String Password = personalData.getPassword();
+            String name = personalData.getName();
+            Integer Age = personalData.getAge();
 
             if (name != null) {
                 videoView = findViewById(R.id.videoView2);

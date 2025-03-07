@@ -1,5 +1,7 @@
 package com.raaceinm.androidpracticals;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -87,13 +89,16 @@ public class FilesTestActivity extends AppCompatActivity {
         linearLayout.setVisibility(View.GONE);
     }
 
+    public void home (View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void backToScroll(View view){
         FragmentContainerView linearLayout = findViewById(R.id.ShowLinearLayout);
-        FragmentContainerView frameLayout = findViewById(R.id.ShowFrameLayout);
         ScrollView scrollView = findViewById(R.id.scrollView);
 
-        scrollView.setVisibility(View.VISIBLE);
-        frameLayout.setVisibility(View.GONE);
-        linearLayout.setVisibility(View.GONE);
+        scrollView.setVisibility(View.GONE);
+        linearLayout.setVisibility(View.VISIBLE);
     }
 }

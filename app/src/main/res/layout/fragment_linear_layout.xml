@@ -19,8 +19,20 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_butt"
+            android:text="@string/back"
             android:scaleX=".9"
-            android:scaleY=".9"/>
+            android:scaleY=".9"
+            android:onClick="backToScroll"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background_butt"
+            android:text="@string/home"
+            android:scaleX=".9"
+            android:scaleY=".9"
+            android:onClick="home"/>
 
         <Button
             android:layout_width="0dp"
@@ -28,14 +40,8 @@
             android:layout_weight="1"
             android:background="@drawable/background_butt"
             android:scaleX=".9"
-            android:scaleY=".9"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/background_butt"
-            android:scaleX=".9"
+            android:text="@string/to_frame"
+            android:onClick="PerformFrameLayout"
             android:scaleY=".9"/>
     </LinearLayout>
 

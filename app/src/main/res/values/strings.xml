@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">redir</string>
-    <string name="this_is_first_practical_work" translatable="false">Practice Num 2</string>
+    <string name="this_is_first_practical_work" translatable="false">Practice Num 3</string>
     <string name="i_want_to_teleport">Drop me</string>
     <string name="completed_sheesh">gemini.google.com</string>
     <string name="error_accessing_file">Error accessing file</string>
@@ -42,4 +42,8 @@
         The model generates text one token at a time, conditioning each new token on the previously generated tokens and the input prompt.
         The final output is constructed token-by-token, using the context generated up to that point to inform all subsequent generation.
     </string>
+    <string name="to_frame">to frame</string>
+    <string name="home">home</string>
+    <string name="back">back</string>
+    <string name="to_linear">to linear</string>
 </resources>

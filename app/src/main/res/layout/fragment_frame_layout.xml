@@ -5,10 +5,44 @@
     android:layout_height="match_parent"
     tools:context=".FrameLayout">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/introduction" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_butt"
+        android:text="@string/back"
+        android:scaleX=".9"
+        android:scaleY=".9"
+        android:onClick="backToScroll"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="bottom|end"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_butt"
+        android:onClick="home"
+        android:scaleX=".9"
+        android:scaleY=".9"
+        android:text="@string/home"
+        android:layout_marginBottom="100dp"
+        android:layout_gravity="bottom|center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_butt"
+        android:scaleX=".9"
+        android:text="@string/to_linear"
+        android:onClick="PerformLinearLayout"
+        android:scaleY=".9"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="100dp"
+        android:layout_gravity="bottom|start"/>
 
 </FrameLayout>
