@@ -24,7 +24,7 @@ public class LinearLayout extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private String mParam1; // Мне не нужно повторять 2 раза, мне и с 1-ого похуй
     private String mParam2;
 
     public LinearLayout() {
