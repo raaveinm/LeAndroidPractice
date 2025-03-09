@@ -55,4 +55,7 @@
     <string name="home">heim</string>
     <string name="back">zurück</string>
     <string name="to_linear">zum linearen</string>
+    <string name="login" >einloggen</string>
+    <string name="password">Passwort</string>
+    <string name="username">Benutzername</string>
 </resources>

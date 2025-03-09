@@ -1,4 +1,4 @@
-package com.raaceinm.androidpracticals;
+package com.raaceinm.androidpracticals.activities;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -18,9 +18,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.raaceinm.androidpracticals.Tools.Sterilization;
-
-import org.w3c.dom.Text;
+import com.raaceinm.androidpracticals.R;
+import com.raaceinm.androidpracticals.Tools.DataTransfer;
 
 public class ExperimentalSheesh extends AppCompatActivity {
     int amountOfContinues = 0;
@@ -125,24 +124,39 @@ public class ExperimentalSheesh extends AppCompatActivity {
                         Toast.makeText(this, "NONONO", Toast.LENGTH_SHORT).show();
                         break;
                     }else{
-                        Sterilization personalData = new Sterilization(
+                        // Using Parcelable
+
+                        DataTransfer personalData = new DataTransfer(
                                 Float.parseFloat(textPhone.getText().toString()),
                                 textEmail.getText().toString(),
                                 textPassword.getText().toString(),
                                 textName.getText().toString(),
                                 Integer.parseInt(textAge.getText().toString()));
 
+                        /*Using Serialization
+
+                        Sterilization personalData = new Sterilization();
+                        personalData.setPersonalData(
+                                Float.parseFloat(textPhone.getText().toString()),
+                                textEmail.getText().toString(),textPassword.getText().toString(),
+                                textName.getText().toString(),
+                                Integer.parseInt(textAge.getText().toString()));
+                        */
+
                         Intent intent = new Intent(this, MainActivity.class);
                         intent.putExtra("Sterilization", personalData);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
 
-                        /*
+
+                        /* Using simple Intent
+
                         intent.putExtra("Phone", Float.parseFloat(textPhone.getText().toString()));
                         intent.putExtra("Email", textEmail.getText().toString());
                         intent.putExtra("Password", textPassword.getText().toString());
                         intent.putExtra("Name", textName.getText().toString());
                         intent.putExtra("Age", Integer.parseInt(textAge.getText().toString()));
+
                         */
                     }
                 }

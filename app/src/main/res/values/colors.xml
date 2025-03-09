@@ -18,4 +18,7 @@
     <color name="button_dark">#8d0000</color>
     <color name="button_light">#ff7124</color>
 
+    <color name="highlightColor_dark">#AFAA5DAD</color>
+    <color name="highlightColor_light">#76351C36</color>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.raaceinm.androidpracticals;
+package com.raaceinm.androidpracticals.activities;
 
 import static android.view.View.GONE;
 import static android.widget.Toast.LENGTH_LONG;
@@ -18,7 +18,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.raaceinm.androidpracticals.Tools.Sterilization;
+import com.raaceinm.androidpracticals.R;
+import com.raaceinm.androidpracticals.Tools.DataTransfer;
 import com.raaceinm.androidpracticals.Tools.Vid;
 
 
@@ -68,46 +69,51 @@ public class MainActivity extends AppCompatActivity {
 
 
     protected void onResume(){
-        super.onResume();
+
         Log.i(TAG, "onResume activity initialized");
-        Sterilization personalData = (Sterilization)getIntent().getSerializableExtra("Sterilization");
-        Bundle arguments = getIntent().getExtras();
+        //Sterilization personalData = (Sterilization)getIntent().getSerializableExtra("Sterilization");
+        new Thread(() -> {
+            Bundle arguments = getIntent().getExtras();
 
-        if (arguments != null) {
+            if (arguments != null) {
 
-            assert personalData != null;
+                DataTransfer personalData = arguments.getParcelable("data");
 
-            Float Phone = personalData.getPhone();
-            String Email = personalData.getEmail();
-            String Password = personalData.getPassword();
-            String name = personalData.getName();
-            Integer Age = personalData.getAge();
+                assert personalData != null;
 
-            if (name != null) {
-                videoView = findViewById(R.id.videoView2);
-                Vid vid = new Vid(videoView, this, VideoFileNameDefault);
-                vid.clearVideoCache(VideoFileNameDefault);
+                Float Phone = personalData.getPhone();
+                String Email = personalData.getEmail();
+                String Password = personalData.getPassword();
+                String name = personalData.getName();
+                Integer Age = personalData.getAge();
 
-                Vid vidExtra = new Vid(videoView, this, VideoFileNameExtra);
+                if (name != null) {
+                    videoView = findViewById(R.id.videoView2);
+                    Vid vid = new Vid(videoView, this, VideoFileNameDefault);
+                    vid.clearVideoCache(VideoFileNameDefault);
 
-                AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);
-                autoCompleteTextView.setVisibility(GONE);
+                    Vid vidExtra = new Vid(videoView, this, VideoFileNameExtra);
 
-                Toast.makeText(this, "data has been stolen successful, dear " +
-                        name, LENGTH_LONG).show();
+                    AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);
+                    autoCompleteTextView.setVisibility(GONE);
 
-                Log.v("STOLEN DATA","NAME "+name);
-                Log.v("STOLEN DATA","PHONE "+Phone);
-                Log.v("STOLEN DATA","EMAIL "+Email);
-                Log.v("STOLEN DATA","PASSWORD "+Password);
-                Log.v("STOLEN DATA","AGE "+Age);
+                    Toast.makeText(this, "data has been stolen successful, dear " +
+                            name, LENGTH_LONG).show();
+
+                    Log.v("STOLEN DATA", "NAME " + name);
+                    Log.v("STOLEN DATA", "PHONE " + Phone);
+                    Log.v("STOLEN DATA", "EMAIL " + Email);
+                    Log.v("STOLEN DATA", "PASSWORD " + Password);
+                    Log.v("STOLEN DATA", "AGE " + Age);
+                } else {
+                    videoView = findViewById(R.id.videoView2);
+                    Vid vid = new Vid(videoView, this, VideoFileNameDefault);
+                }
             } else {
-                videoView = findViewById(R.id.videoView2);
-                Vid vid = new Vid(videoView, this, VideoFileNameDefault);
+                return;
             }
-        }else{
-            return;
-        }
+        });
+        super.onResume();
     }
 
     protected void onPause(){

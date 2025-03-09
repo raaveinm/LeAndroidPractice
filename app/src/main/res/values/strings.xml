@@ -46,4 +46,9 @@
     <string name="home">home</string>
     <string name="back">back</string>
     <string name="to_linear">to linear</string>
+    <string name="login">Log in</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

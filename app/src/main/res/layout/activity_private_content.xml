@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".layouts.FrameLayout">
+    android:theme="@style/Base.Theme.AndroidPracticals"
+    tools:context=".layouts.FrameLayout"
+    android:background="?attr/backgroundColor">
 
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:autofillHints="password"
         android:ems="10"
         android:inputType="textPassword"
@@ -22,7 +25,7 @@
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:autofillHints="username"
         android:ems="10"
         android:inputType="text"
@@ -44,39 +47,11 @@
         android:layout_marginTop="240dp"
         android:layout_gravity="top|center"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_butt"
-        android:text="@string/back"
-        android:scaleX=".9"
-        android:scaleY=".9"
-        android:onClick="backToScroll"
-        android:layout_marginBottom="100dp"
-        android:layout_marginEnd="20dp"
-        android:layout_gravity="bottom|end"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_butt"
-        android:onClick="home"
-        android:scaleX=".9"
-        android:scaleY=".9"
-        android:text="@string/home"
-        android:layout_marginBottom="100dp"
-        android:layout_gravity="bottom|center"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_butt"
-        android:scaleX=".9"
-        android:text="@string/to_linear"
-        android:onClick="PerformLinearLayout"
-        android:scaleY=".9"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="100dp"
-        android:layout_gravity="bottom|start"/>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.raaceinm.androidpracticals.activities.ExtraContent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"/>
 
 </FrameLayout>

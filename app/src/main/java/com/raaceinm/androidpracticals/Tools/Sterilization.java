@@ -6,8 +6,12 @@ public class Sterilization implements Serializable {
     private String password;
     private String name;
     private Integer age;
+    private String username;
+    private String loginPassword;
 
-    public Sterilization(Float phone, String email, String password, String name, int age){
+    public Sterilization() {}
+
+    public void setPersonalData(Float phone, String email, String password, String name, int age) {
         this.phone = phone;
         this.email = email;
         this.password = password;
@@ -15,23 +19,16 @@ public class Sterilization implements Serializable {
         this.age = age;
     }
 
-    public Float getPhone(){
-        return phone;
+    public void setLoginData(String username, String loginPassword) {
+        this.username = username;
+        this.loginPassword = loginPassword;
     }
 
-    public String getEmail(){
-        return email;
-    }
-
-    public String getPassword(){
-        return password;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public int getAge(){
-        return age;
-    }
+    public Float getPhone() {return phone;}
+    public String getEmail() {return email;}
+    public String getPassword() {return password;}
+    public String getName() {return name;}
+    public Integer getAge() {return age;}
+    public String getUsername() {return username;}
+    public String getLoginPassword(){return loginPassword;}
 }

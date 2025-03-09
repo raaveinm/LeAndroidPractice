@@ -47,4 +47,7 @@
     <string name="home">տուն</string>
     <string name="back">ետ</string>
     <string name="to_linear">դեպի գծային դասավորություն</string>
+    <string name="login">մուտք գործել</string>
+    <string name="password">գաղտնաբառը</string>
+    <string name="username">օգտվողի անունը</string>
 </resources>

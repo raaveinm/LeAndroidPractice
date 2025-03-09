@@ -6,11 +6,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FilesTestActivity">
+    tools:context=".activities.FilesTestActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ShowLinearLayout"
-        android:name="com.raaceinm.androidpracticals.LinearLayout"
+        android:name="com.raaceinm.androidpracticals.layouts.LinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -22,7 +22,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ShowFrameLayout"
-        android:name="com.raaceinm.androidpracticals.FrameLayout"
+        android:name="com.raaceinm.androidpracticals.layouts.FrameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -126,6 +126,13 @@
                 android:layout_height="wrap_content"
                 android:onClick="PerformFrameLayout"
                 android:text="@string/dropframe" />
+
+            <Button
+                android:id="@+id/Register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="Register"
+                android:text="@string/login" />
 
         </LinearLayout>
     </ScrollView>
