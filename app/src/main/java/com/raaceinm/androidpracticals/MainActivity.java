@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart(){
         super.onStart();
-        Log.i(TAG, "onStart activity initialized");
-
+        Log.i(TAG, "onStart activity initialized"); // Здесь был Я, похуй кто Я
         Button dropMeButton = findViewById(R.id.button);
 
         dropMeButton.setOnClickListener(v -> {
