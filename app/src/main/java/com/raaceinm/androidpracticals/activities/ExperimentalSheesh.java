@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.snackbar.Snackbar;
 import com.raaceinm.androidpracticals.R;
 import com.raaceinm.androidpracticals.Tools.DataTransfer;
+import com.raaceinm.androidpracticals.Tools.Sterilization;
 
 public class ExperimentalSheesh extends AppCompatActivity {
     int amountOfContinues = 0;
@@ -124,7 +125,7 @@ public class ExperimentalSheesh extends AppCompatActivity {
                         Toast.makeText(this, "NONONO", Toast.LENGTH_SHORT).show();
                         break;
                     }else{
-                        // Using Parcelable
+                        /*Using Parcelable
 
                         DataTransfer personalData = new DataTransfer(
                                 Float.parseFloat(textPhone.getText().toString()),
@@ -132,8 +133,8 @@ public class ExperimentalSheesh extends AppCompatActivity {
                                 textPassword.getText().toString(),
                                 textName.getText().toString(),
                                 Integer.parseInt(textAge.getText().toString()));
-
-                        /*Using Serialization
+                        */
+                        //Using Serialization
 
                         Sterilization personalData = new Sterilization();
                         personalData.setPersonalData(
@@ -141,7 +142,7 @@ public class ExperimentalSheesh extends AppCompatActivity {
                                 textEmail.getText().toString(),textPassword.getText().toString(),
                                 textName.getText().toString(),
                                 Integer.parseInt(textAge.getText().toString()));
-                        */
+
 
                         Intent intent = new Intent(this, MainActivity.class);
                         intent.putExtra("Sterilization", personalData);

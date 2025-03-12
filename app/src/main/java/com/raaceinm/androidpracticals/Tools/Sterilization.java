@@ -1,34 +1,34 @@
 package com.raaceinm.androidpracticals.Tools;
 import java.io.Serializable;
 public class Sterilization implements Serializable {
-    private Float phone;
-    private String email;
-    private String password;
-    private String name;
-    private Integer age;
-    private String username;
-    private String loginPassword;
+    private static Float phone;
+    private static String email;
+    private static String password;
+    private static String name;
+    private static Integer age;
+    private static String username;
+    private static String loginPassword;
 
     public Sterilization() {}
 
     public void setPersonalData(Float phone, String email, String password, String name, int age) {
-        this.phone = phone;
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.age = age;
+        Sterilization.phone = phone;
+        Sterilization.email = email;
+        Sterilization.password = password;
+        Sterilization.name = name;
+        Sterilization.age = age;
     }
 
     public void setLoginData(String username, String loginPassword) {
-        this.username = username;
-        this.loginPassword = loginPassword;
+        Sterilization.username = username;
+        Sterilization.loginPassword = loginPassword;
     }
 
-    public Float getPhone() {return phone;}
-    public String getEmail() {return email;}
-    public String getPassword() {return password;}
-    public String getName() {return name;}
-    public Integer getAge() {return age;}
+    public static Float getPhone() {return phone;}
+    public static String getEmail() {return email;}
+    public static String getPassword() {return password;}
+    public static String getName() {return name;}
+    public static Integer getAge() {return age;}
     public String getUsername() {return username;}
     public String getLoginPassword(){return loginPassword;}
 }

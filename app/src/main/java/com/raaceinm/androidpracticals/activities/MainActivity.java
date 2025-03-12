@@ -19,7 +19,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.raaceinm.androidpracticals.R;
-import com.raaceinm.androidpracticals.Tools.DataTransfer;
+import com.raaceinm.androidpracticals.Tools.Sterilization;
 import com.raaceinm.androidpracticals.Tools.Vid;
 
 
@@ -68,24 +68,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    protected void onResume(){
-
+    @Override
+    protected void onResume() {
+        super.onResume();
         Log.i(TAG, "onResume activity initialized");
-        //Sterilization personalData = (Sterilization)getIntent().getSerializableExtra("Sterilization");
+
+        Bundle arguments = getIntent().getExtras();
+
         new Thread(() -> {
-            Bundle arguments = getIntent().getExtras();
 
             if (arguments != null) {
-
-                DataTransfer personalData = arguments.getParcelable("data");
-
-                assert personalData != null;
-
-                Float Phone = personalData.getPhone();
-                String Email = personalData.getEmail();
-                String Password = personalData.getPassword();
-                String name = personalData.getName();
-                Integer Age = personalData.getAge();
+                Float Phone = Sterilization.getPhone();
+                String Email = Sterilization.getEmail();
+                String Password = Sterilization.getPassword();
+                String name = Sterilization.getName();
+                Integer Age = Sterilization.getAge();
 
                 if (name != null) {
                     videoView = findViewById(R.id.videoView2);
@@ -110,10 +107,11 @@ public class MainActivity extends AppCompatActivity {
                     Vid vid = new Vid(videoView, this, VideoFileNameDefault);
                 }
             } else {
-                return;
+                videoView = findViewById(R.id.videoView2);
+                Vid vid = new Vid(videoView, this, VideoFileNameDefault);
             }
-        });
-        super.onResume();
+        }).start();
+
     }
 
     protected void onPause(){
