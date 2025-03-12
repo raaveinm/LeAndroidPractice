@@ -4,6 +4,4 @@
     <string name="i_want_to_teleport">Drop me</string>
     <string name="completed_sheesh">www.porsche.com</string>
     <string name="error_accessing_file">Error accessing file</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
