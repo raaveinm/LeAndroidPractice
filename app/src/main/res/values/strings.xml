@@ -49,6 +49,11 @@
     <string name="login">Log in</string>
     <string name="password">password</string>
     <string name="username">username</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="extra_content_hello">Welcome to the extra private content that nobody seen</string>
+    <string name="see_extra">See Private Content</string>
+    <string name="extra_2">Nix, the adorable, furry, and undeniably fierce companion of Kay Vess in Star Wars Outlaws, hails from a fascinating, albeit somewhat mysterious, corner of the galaxy. He\'s a Merqaal, a species not widely known in the mainstream Star Wars universe, making him a bit of a novelty.
+        \n\nImagine a creature that blends the best features of a loyal dog, a stealthy cat, and maybe even a touch of a mischievous monkey. That starts to paint a picture of Nix. His history is largely tied to his bond with Kay. They\'re more than just partners; they\'re a team forged in the underworld\'s fires. It is said that Nix and Kay found each other, and it wouldn\'t be too much off to say that rescued each other, likely during one of Kay\'s many escapades or close calls. The specifics of their first meeting are a story yet to be fully told, adding to their mystique.
+        \n\n<b>Nix,</b> as a Merqaal, is perfectly adapted to the life of a scoundrel\'s companion. He\'s small and agile, able to squeeze into tight spaces, scout ahead, distract enemies, and even retrieve objects. This agility is coupled with surprising strength and ferocity when needed. While he might look cute and cuddly, Nix is not to be underestimated. He\'s got sharp claws and teeth and an unwavering loyalty to Kay, making him a formidable ally in a fight or a handy helper in a heist.
+        \n\nThe Merqaal species itself is somewhat shrouded in mystery. We only know a little, however, we know that they come from a harsh desert world. As a species, they are very loyal.
+    </string>
 </resources>

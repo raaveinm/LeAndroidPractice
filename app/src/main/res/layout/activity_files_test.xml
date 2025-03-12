@@ -10,7 +10,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ShowLinearLayout"
-        android:name="com.raaceinm.androidpracticals.layouts.LinearLayout"
+        android:name="com.raaceinm.androidpracticals.fragments.LinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -22,7 +22,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ShowFrameLayout"
-        android:name="com.raaceinm.androidpracticals.layouts.FrameLayout"
+        android:name="com.raaceinm.androidpracticals.fragments.FrameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

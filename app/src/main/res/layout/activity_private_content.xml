@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainFrameLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Base.Theme.AndroidPracticals"
-    tools:context=".layouts.FrameLayout"
+    tools:context=".fragments.FrameLayout"
     android:background="?attr/backgroundColor">
 
     <EditText
@@ -47,11 +48,63 @@
         android:layout_marginTop="240dp"
         android:layout_gravity="top|center"/>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.raaceinm.androidpracticals.activities.ExtraContent"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:visibility="gone"/>
+    <LinearLayout
+        android:id="@+id/hiddenContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <FrameLayout
+            android:id="@+id/hiddenFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:visibility="invisible">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1.2"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            android:gravity="center">
+
+            <Space
+                android:layout_width="95dp"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/key"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/background_butt"
+                android:onClick="FragmentManager"
+                android:src="@drawable/vpn_key_24px"
+                tools:ignore="ContentDescription" />
+
+            <Space
+                android:layout_width="100dp"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/shield"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/background_butt"
+                android:onClick="FragmentManager"
+                android:src="@drawable/shield_24px" />
+
+            <Space
+                android:layout_width="95dp"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ExtraContent"
+    android:background="?attr/backgroundColor"
+    android:orientation="vertical">
+
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="25dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:paddingStart="25dp"
+        android:text="->MEET  NIX" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:src="@drawable/nix_in_star_wars_outlaws" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:text="@string/extra_2"
+                android:textAlignment="viewStart"
+                android:textColor="?attr/textColor" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

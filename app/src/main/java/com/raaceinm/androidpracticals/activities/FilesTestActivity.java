@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ScrollView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +20,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.raaceinm.androidpracticals.R;
 import java.util.Objects;
 
@@ -48,12 +50,23 @@ public class FilesTestActivity extends AppCompatActivity {
                         String forcedData = data != null ? data.getStringExtra(FilesTestActivity.EXTRA_DATA) : null;
                         Log.d(TAG, "onActivityResult: " + forcedData);
                         isRegistered = true;
+                        Snackbar.make(this.findViewById(android.R.id.content),
+                                        "success!",
+                                        Snackbar.LENGTH_LONG).show();
+                        Button register = findViewById(R.id.Register);
+                        register.setText(R.string.see_extra);
                     } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
                         isRegistered = false;
                         Log.d(TAG, "onActivityResult: canceled");
+                        Snackbar.make(this.findViewById(android.R.id.content),
+                                        "incorrect username or password",
+                                        Snackbar.LENGTH_LONG).show();
                     } else {
                         isRegistered = false;
                         Log.e(TAG, "onActivityResult: failed");
+                        Snackbar.make(this.findViewById(android.R.id.content),
+                                "there was an error",
+                                Snackbar.LENGTH_LONG).show();
                     }
                 }
         );
@@ -127,12 +140,11 @@ public class FilesTestActivity extends AppCompatActivity {
     }
 
     public void Register(View view) {
+        Intent register = new Intent(this, PrivateContent.class);
         if (isRegistered) {
-            Intent register = new Intent(this, MainActivity.class);
             register.putExtra("isRegistered", true);
             startActivity(register);
         } else {
-            Intent register = new Intent(this, PrivateContent.class);
             resultLauncher.launch(register);
 
         }
