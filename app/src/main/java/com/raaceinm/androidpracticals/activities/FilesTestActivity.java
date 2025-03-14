@@ -1,5 +1,8 @@
 package com.raaceinm.androidpracticals.activities;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -104,24 +107,28 @@ public class FilesTestActivity extends AppCompatActivity {
     }
 
     public void PerformLinearLayout(View view) {
+        FragmentContainerView showListView = findViewById(R.id.ShowListView);
         FragmentContainerView linearLayout = findViewById(R.id.ShowLinearLayout);
         FragmentContainerView frameLayout = findViewById(R.id.ShowFrameLayout);
         ScrollView scrollView = findViewById(R.id.scrollView);
 
-        scrollView.setVisibility(View.GONE);
-        frameLayout.setVisibility(View.GONE);
-        linearLayout.setVisibility(View.VISIBLE);
+
+        scrollView.setVisibility(GONE);
+        frameLayout.setVisibility(GONE);
+        linearLayout.setVisibility(VISIBLE);
+        showListView.setVisibility(GONE);
     }
 
     public void PerformFrameLayout(View view) {
-
+        FragmentContainerView showListView = findViewById(R.id.ShowListView);
         FragmentContainerView linearLayout = findViewById(R.id.ShowLinearLayout);
         FragmentContainerView frameLayout = findViewById(R.id.ShowFrameLayout);
         ScrollView scrollView = findViewById(R.id.scrollView);
 
-        scrollView.setVisibility(View.GONE);
-        frameLayout.setVisibility(View.VISIBLE);
-        linearLayout.setVisibility(View.GONE);
+        scrollView.setVisibility(GONE);
+        frameLayout.setVisibility(VISIBLE);
+        linearLayout.setVisibility(GONE);
+        showListView.setVisibility(GONE);
     }
 
     public void home(View view) {
@@ -131,12 +138,26 @@ public class FilesTestActivity extends AppCompatActivity {
 
     public void backToScroll(View view) {
         FragmentContainerView linearLayout = findViewById(R.id.ShowLinearLayout);
-        ScrollView scrollView = findViewById(R.id.scrollView);
         FragmentContainerView frameLayout = findViewById(R.id.ShowFrameLayout);
+        FragmentContainerView showListView = findViewById(R.id.ShowListView);
+        ScrollView scrollView = findViewById(R.id.scrollView);
 
-        scrollView.setVisibility(View.VISIBLE);
-        linearLayout.setVisibility(View.GONE);
-        frameLayout.setVisibility(View.GONE);
+        scrollView.setVisibility(VISIBLE);
+        linearLayout.setVisibility(GONE);
+        frameLayout.setVisibility(GONE);
+        showListView.setVisibility(GONE);
+    }
+
+    public void PerformListview(View view) {
+        FragmentContainerView linearLayout = findViewById(R.id.ShowLinearLayout);
+        FragmentContainerView frameLayout = findViewById(R.id.ShowFrameLayout);
+        FragmentContainerView showListView = findViewById(R.id.ShowListView);
+        ScrollView scrollView = findViewById(R.id.scrollView);
+
+        scrollView.setVisibility(GONE);
+        linearLayout.setVisibility(GONE);
+        frameLayout.setVisibility(GONE);
+        showListView.setVisibility(VISIBLE);
     }
 
     public void Register(View view) {

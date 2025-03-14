@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
         Vid vidDefault = new Vid(videoView, this,VideoFileNameDefault);
         vidDefault.clearVideoCache(VideoFileNameDefault);
-        Vid vidExtra = new Vid(videoView, this,VideoFileNameDefault);
+        Vid vidExtra = new Vid(videoView, this,VideoFileNameExtra);
         vidExtra.clearVideoCache(VideoFileNameExtra);
     }
 }

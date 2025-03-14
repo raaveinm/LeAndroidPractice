@@ -1,5 +1,7 @@
 package com.raaceinm.androidpracticals.Tools;
+
 import java.io.Serializable;
+
 public class Sterilization implements Serializable {
     private static Float phone;
     private static String email;
