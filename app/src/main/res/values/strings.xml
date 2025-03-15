@@ -1,9 +1,3 @@
 <resources>
-    <string name="app_name">redir</string>
-    <string name="this_is_first_practical_work">Practice Num 2</string>
-    <string name="i_want_to_teleport">Drop me</string>
-    <string name="completed_sheesh">gemini.google.com</string>
-    <string name="error_accessing_file">Error accessing file</string>
-    <string name="drop">Drop</string>
-    <string name="toContinue">Continue</string>>
+    <string name="app_name">ramp</string>
 </resources>
