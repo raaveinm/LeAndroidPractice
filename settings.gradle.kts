@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ramp"
+rootProject.name = "AndroidPracticals"
 include(":app")
+ 

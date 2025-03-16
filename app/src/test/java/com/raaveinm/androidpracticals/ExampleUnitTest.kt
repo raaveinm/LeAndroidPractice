@@ -1,4 +1,4 @@
-package com.raaveinm.ramp
+package com.raaveinm.androidpracticals
 
 import org.junit.Test
 
