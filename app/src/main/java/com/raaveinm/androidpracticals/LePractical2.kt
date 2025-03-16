@@ -5,74 +5,23 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.raaveinm.androidpracticals.ui.theme.AndroidPracticalsTheme
 
-/**
- * # UI
- *
- * ## Examples
- *
- * ### Scaffold
- *
- * Scaffold is a basic layout for arranging material components. In common - patterns, such as the
- * screen with a small top app bar and a floating action button.
- * ```
- * Surface(){
- *     Scaffold(
- *         topBar = {},
- *         content = {},
- *         bottomBar = {}
- *     )
- * }
- *```
- *
- * ### Surface
- * ```
- * Surface(
- *     color = MaterialTheme.colorScheme.surface //example
- *     shape = MaterialTheme.shapes.medium
- *     border = BorderStroke(1.dp, Color.Black) // or colorScheme
- *     shadowElevation = 5.dp
- *     tonalElevation = 5.dp
- * ){
- *     Text("Surface")
- * }
- * ```
- *
- * ### Modifiers
- *
- * ```
- * Text(
- *     text = "Hello World",
- *     Modifier.background(Color.Magenta)
- *         .size(200.dp, 30.dp)
- *         .padding(5.dp)
- *         .alpha(0.2f)
- *         .clickable { TODO:"onClick" }
- * )
- * ```
- *
- * ### Row
- *
- * ```
- * fun RowExample(){
- *     Row(
- *         Modifier.fillMaxWidth()
- *             .padding(16.dp) //etc
- *     ){
- *         Image(pic.image)
- *         Text("sample")
- *         RadioButton(/*...*/)
- *     }
- * }
- * ```
- */
+
 class LePractical2 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +33,7 @@ class LePractical2 : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
+                    SearchBar()
                 }
             }
         }
@@ -104,4 +54,29 @@ fun GreetingPreview() {
     AndroidPracticalsTheme {
         Greeting2("Android")
     }
+}
+
+@Composable
+fun SearchBar(
+    modifier: Modifier = Modifier
+) {
+    TextField(
+        value = "",
+        onValueChange = {},
+        leadingIcon = {
+            Icon(
+                imageVector =  androidx.compose.material.icons.Icons.Filled.Search,
+                contentDescription = null
+            )
+        },
+        colors = TextFieldDefaults.colors(),
+        modifier = modifier
+            .fillMaxWidth()
+            .heightIn(min = 56.dp), // heightIn - limit the height of the text field
+        placeholder = {
+            Text(
+                text = stringResource(id = R.string.placeholder_search)
+            )
+        }
+    )
 }
