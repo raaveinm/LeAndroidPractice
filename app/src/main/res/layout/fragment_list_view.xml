@@ -11,6 +11,16 @@
         android:layout_height="match_parent"
         android:visibility="visible"/>
 
+        <!-->
+        for declaration in the xml file
+
+        android:id="@+id/listViewArray"
+        android:entries="@array/Name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        <-->
+
     <ListView
         android:id="@+id/listViewCursor"
         android:layout_width="match_parent"
