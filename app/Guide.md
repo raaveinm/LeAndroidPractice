@@ -1,6 +1,6 @@
 # Kotlin and jetpack compose Start
 
-# **Theory**
+## **Theory**
 
 Compose apps transform data into UI by calling composable functions. If your data changes,
 Compose re-executes these functions with the new data, creating an updated UI—this is
@@ -79,7 +79,161 @@ And for a `Column`
 
 ![img_1.png](img_1.png)
 
-# **Important Information**
+To implement this flexible section container, you use so-called slot APIs. Before you implement this,
+read the section on the documentation page about slot-based layouts. This will help you understand
+what a slot-based layout is and how you can use slot APIs to build such a layout.
+
+### Navigation Rail - Material
+
+When creating layouts for apps, you also need to be mindful of what it will look like in multiple
+configurations including landscape mode on your phone. Here is the design for the app in landscape
+mode, notice how the bottom navigation turns into a rail on the left of the screen content.
+
+To implement this you will use the `NavigationRail` composable which is part of the Compose Material
+library and has a similar implementation to the `NavigationBar` that was used to create the bottom
+navigation bar. Inside the NavigationRail composable, you will add `NavigationRailItem` elements for 
+Home and Profile.
+
+```kt
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
+
+@Composable
+private fun SootheNavigationRail(modifier: Modifier = Modifier) {
+    NavigationRail(
+    ) {
+        Column(
+        ) {
+            NavigationRailItem(
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.Spa,
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text(stringResource(R.string.bottom_navigation_home))
+                },
+                selected = true,
+                onClick = {}
+            )
+
+            NavigationRailItem(
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.AccountCircle,
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text(stringResource(R.string.bottom_navigation_profile))
+                },
+                selected = false,
+                onClick = {}
+            )
+        }
+    }
+}
+```
+
+### Window size
+
+if you run the app on a device or emulator and turn it to the side, it won't show you the landscape
+version. That is because we need to tell the app when to show which configuration of the app.
+To do this, use the `calculateWindowSizeClass()` function to see what configuration the phone is in.
+
+There are three window size class widths: Compact, Medium and Expanded. When the app is in portrait
+mode it is Compact width, when it is in landscape mode it is Expanded width.
+
+![img_2.png](img_2.png)
+
+```kt
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+@Composable
+fun MySootheApp(windowSize: WindowSizeClass) {
+   when (windowSize.widthSizeClass) {
+       WindowWidthSizeClass.Compact -> {
+           MySootheAppPortrait()
+       }
+       WindowWidthSizeClass.Expanded -> {
+           MySootheAppLandscape()
+       }
+   }
+}
+```
+
+In `setContent()` create a val called `windowSizeClass` set to `calculateWindowSize()`  Since
+`calculateWindowSize()` is still experimental you will need to opt into the
+`ExperimentalMaterial3WindowSizeClassApi` class.
+
+```kt
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+
+class MainActivity : ComponentActivity() {
+   @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+   override fun onCreate(savedInstanceState: Bundle?) {
+       super.onCreate(savedInstanceState)
+       setContent {
+           val windowSizeClass = calculateWindowSizeClass(this)
+           MySootheApp(windowSizeClass)
+       }
+   }
+}
+```
+
+### State in Compose
+
+An app's "state" is any value that can change over time. This is a very broad definition and 
+encompasses everything from a [Room](https://developer.android.com/jetpack/androidx/releases/room#kts)
+database to a variable in a class.
+
+All Android apps display state to the user. A few examples of state in Android apps are:
+
+- The most recent messages received in a chat app.
+- The user's profile photo.
+- The scroll position in a list of items.
+- Key idea: State determines what is shown in the UI at any particular time
+
+refer to the Composition as the description of the UI built by Compose when it executes composables.
+If a state change happens, Compose re-executes the affected composable functions with the new state,
+creating an updated UI—this is called recomposition. Compose also looks at what data an individual
+composable needs, so that it only recomposes components whose data has changed and skips those that
+are not affected.
+
+- The Composition: a description of the UI built by Jetpack Compose when it executes composables.
+- Initial composition: creation of a Composition by running composables the first time.
+- Recomposition: re-running composables to update the Composition when data changes.
+
+To be able to do this, Compose needs to know what state to track, so that when it receives an update
+it can schedule the recomposition.
+
+Compose has a special state tracking system in place that schedules recompositions for any
+composables that read a particular state. This lets Compose be granular and just recompose those
+composable functions that need to change, not the whole UI. This is done by tracking not only
+"writes" (that is, state changes), but also "reads" to the state.
+
+Use Compose's `State` and `MutableState` types to make state observable by Compose.
+
+Compose keeps track of each composable that reads State `value` properties and triggers a
+recomposition when its value changes. You can use the `mutableStateOf` function to create an
+observable `MutableState`. It receives an initial value as a parameter that is wrapped in a `State`
+object, which then makes its `value` observable.
+
+### Stateful vs Stateless
+
+A stateless composable is a composable that doesn't own any state, meaning it doesn't hold or define
+or modify new state.
+
+A stateful composable is a composable that owns a piece of state that can change over time.
+
+In real apps, having a 100% stateless composable can be difficult to achieve depending on the
+composable's responsibilities. You should design your composables in a way that they will own as
+little state as possible and allow the state to be hoisted, when it makes sense, by exposing it in
+the composable's API.
+
+## **Important Information**
 
 - Setting a different value for the expanded variable won't make Compose detect it as a
 state change so nothing will happen. But its possible to save state decelerated with `remember`
@@ -94,7 +248,10 @@ Kotlin logic.
 
 - LazyColumn and LazyRow are equivalent to RecyclerView in Android Views
 
-# **Methods**
+- It's a good practice to provide a default Modifier to all composable functions, as it increases
+reusability. It should appear as the first optional parameter in the parameter list, after all
+required parameters.
+## **Methods**
 
 `Arrangement` (within a `Column` or `Row`): Dictates how children are spaced out along the main
 axis of the layout. `Arrangement.Center` within a Column centers **vertically**. `Arrangement.Center`
@@ -179,5 +336,27 @@ fun RowExample(){
         Text("sample")
         RadioButton(/*...*/)
     }
+}
+```
+
+### Navigation bar
+
+```kt
+NavigationBar (modifier = modifier) {
+        NavigationBarItem(
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Spa,
+                    contentDescription = null
+                )
+            },
+            label = {
+                Text(text = stringResource(R.string.bottom_navigation_home))
+            },
+            selected = true,
+            onClick = {}
+        )
+        NavigationBarItem(/*...*/)
+        NavigationBarItem(/*...*/)
 }
 ```
