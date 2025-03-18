@@ -56,5 +56,8 @@
         \n\n<b>Nix,</b> as a Merqaal, is perfectly adapted to the life of a scoundrel\'s companion. He\'s small and agile, able to squeeze into tight spaces, scout ahead, distract enemies, and even retrieve objects. This agility is coupled with surprising strength and ferocity when needed. While he might look cute and cuddly, Nix is not to be underestimated. He\'s got sharp claws and teeth and an unwavering loyalty to Kay, making him a formidable ally in a fight or a handy helper in a heist.
         \n\nThe Merqaal species itself is somewhat shrouded in mystery. We only know a little, however, we know that they come from a harsh desert world. As a species, they are very loyal.
     </string>
-    <string name="listItemExample" >Open ListView Example</string>
+    <string name="listItemExample">Open ListView Example</string>
+    <string name="recyclerViewText" translatable="false" />
+    <string name="hello_blank_fragment" translatable="false">hi</string>
+    <string name="name" />
 </resources>

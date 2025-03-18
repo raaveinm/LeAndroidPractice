@@ -5,9 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.FilesTestActivity">
-
+    android:layout_height="match_parent">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ShowLinearLayout"
         android:name="com.raaceinm.androidpracticals.fragments.LinearLayout"
@@ -31,14 +29,6 @@
         android:layout_alignParentBottom="true"
         android:visibility="gone"
         tools:visibility="gone" />
-
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/ShowListView"
-        android:name="com.raaceinm.androidpracticals.fragments.ListViewFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -142,19 +132,6 @@
                 android:layout_height="wrap_content"
                 android:onClick="Register"
                 android:text="@string/login" />
-
-            <Button
-                android:id="@+id/listItemOpen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="PerformListview"
-                android:text="@string/listItemExample" />
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerView"
-                android:name="com.raaceinm.androidpracticals.fragments.ListViewFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>

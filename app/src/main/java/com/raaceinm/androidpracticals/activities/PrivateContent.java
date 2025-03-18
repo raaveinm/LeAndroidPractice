@@ -1,7 +1,6 @@
 package com.raaceinm.androidpracticals.activities;
 
 import static android.view.View.GONE;
-import static android.view.View.inflate;
 import static android.view.View.VISIBLE;
 
 import android.annotation.SuppressLint;
@@ -9,11 +8,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -25,8 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.raaceinm.androidpracticals.R;
 import com.raaceinm.androidpracticals.fragments.AnotherPrivate;
 
-import com.raaceinm.androidpracticals.fragments.ExtraContent;
-import com.raaceinm.androidpracticals.fragments.LinearLayout;
+import com.raaceinm.androidpracticals.fragments.ListViewFragment;
 
 public class PrivateContent extends AppCompatActivity {
     public static final String EXTRA_DATA = "com.raaceinm.androidpracticals.activities.EXTRA_DATA";
@@ -91,7 +87,7 @@ public class PrivateContent extends AppCompatActivity {
 
     public void FragmentManager(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        ExtraContent fragment1 = new ExtraContent();
+        ListViewFragment fragment1 = new ListViewFragment();
         AnotherPrivate fragment2 = new AnotherPrivate();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -1,7 +1,10 @@
 package com.raaceinm.androidpracticals.fragments;
 
+import static com.raaceinm.androidpracticals.Tools.ComponentsKt.getGPUDataSet;
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,22 +14,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.raaceinm.androidpracticals.R;
+import com.raaceinm.androidpracticals.Tools.GPUs;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 
 public class ListViewFragment extends Fragment {
 
-
-    String[] listItems = {
-            "Item 1",
-            "Item 2",
-            "Item 3",
-            "Item 4",
-            "Item 5"
-    };
-
-    public ListViewFragment() {
-
-    }
+    @NotNull
+    List<GPUs> listItems = getGPUDataSet();
+    private ListView customListView;
 
     public static ListViewFragment newInstance(String param1, String param2) {
         ListViewFragment fragment = new ListViewFragment();
@@ -42,16 +42,29 @@ public class ListViewFragment extends Fragment {
         if (getArguments() != null) {
             System.out.println("Arguments: " + getArguments());
         }
-
-        ListView customListView = getView().findViewById(R.id.listViewArray);
-        ArrayAdapter<String> customAdapter = new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_list_item_1, listItems);
-        customListView.setAdapter(customAdapter);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_list_view, container, false);
+        // Inflate the layout first
+        View view = inflater.inflate(R.layout.fragment_list_view, container, false);
+
+        customListView = view.findViewById(R.id.listViewArray);
+        ArrayAdapter<String> customAdapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, getNames(listItems));
+
+        customListView.setAdapter(customAdapter);
+        return view;
+    }
+    private List<String> getNames(List<GPUs> gpuList){
+        List<String> names = new java.util.ArrayList<>();
+        for (GPUs gpu : gpuList) {
+            names.add(gpu.getName());
+        }
+        return names;
     }
 }
+
+
+
