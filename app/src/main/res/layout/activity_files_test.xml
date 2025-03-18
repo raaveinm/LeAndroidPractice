@@ -17,7 +17,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="gone" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ShowFrameLayout"
@@ -28,18 +29,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="gone" />
 
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ShowListView"
         android:name="com.raaceinm.androidpracticals.fragments.ListViewFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="gone" />
 
     <ScrollView
