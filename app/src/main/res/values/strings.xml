@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">redir</string>
-    <string name="this_is_first_practical_work">Practice Num 1</string>
-    <string name="i_want_to_teleport">Drop me</string>
-    <string name="completed_sheesh">www.porsche.com</string>
-    <string name="error_accessing_file">Error accessing file</string>
+    <string name="app_name">risottoApp</string>
+
+    <string name="show_less">Show less</string>
+    <string name="show_more">Show more</string>
+    <string name="title_activity_le_practical2">LePractical2</string>
+    <string name="placeholder_search">Search</string>
 </resources>
