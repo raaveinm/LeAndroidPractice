@@ -1,16 +1,13 @@
 package com.raaceinm.androidpracticals.Tools
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.compose.foundation.gestures.snapping.SnapPosition.End.position
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.raaceinm.androidpracticals.R
-import com.raaceinm.androidpracticals.fragments.RecyclerViewFragment
 
 class RecyclerViewAdapter(private val arrayList: ArrayList<CPUItem>) :
     RecyclerView.Adapter<RecyclerViewAdapter.MyRow>() {

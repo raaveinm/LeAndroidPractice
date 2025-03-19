@@ -49,6 +49,39 @@
                 android:textAlignment="viewStart"
                 android:textColor="?attr/textColor" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/editTextText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="11"
+                    android:gravity="center"
+                    android:background="@drawable/round_background"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/type_something" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
         </LinearLayout>
     </ScrollView>
 

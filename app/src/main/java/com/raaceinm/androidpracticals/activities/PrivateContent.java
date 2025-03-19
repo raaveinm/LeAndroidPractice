@@ -27,6 +27,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.raaceinm.androidpracticals.R;
 import com.raaceinm.androidpracticals.fragments.AddNewCard;
 import com.raaceinm.androidpracticals.fragments.AnotherPrivate;
+import com.raaceinm.androidpracticals.fragments.ContentResolver;
 import com.raaceinm.androidpracticals.fragments.ListViewFragment;
 
 public class PrivateContent extends AppCompatActivity {
@@ -93,7 +94,7 @@ public class PrivateContent extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         if (view.getId() == R.id.key) {
-            fragmentTransaction.replace(R.id.hiddenFrameLayout, new ListViewFragment(), "fragment1");
+            fragmentTransaction.replace(R.id.hiddenFrameLayout, new ContentResolver(), "fragment1");
             Log.d("EEE", "pressed key");
         } else if (view.getId() == R.id.shield) {
             fragmentTransaction.replace(R.id.hiddenFrameLayout, new AnotherPrivate(), "fragment2");
@@ -103,7 +104,7 @@ public class PrivateContent extends AppCompatActivity {
             Log.d("EEE", "pressed addGPU");
         } else if (view.getId() == R.id.confirm) {
             ReNewList(textView.getText().toString());
-            fragmentTransaction.replace(R.id.hiddenFrameLayout, new ListViewFragment(), "fragment1");
+            fragmentTransaction.replace(R.id.hiddenFrameLayout, new ContentResolver(), "fragment1");
             Log.d("EEE", "pressed confirm");
         } else {
             Log.e("EEE", "Unknown button pressed");

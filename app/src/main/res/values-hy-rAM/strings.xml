@@ -56,4 +56,5 @@
     <string name="listItemExample" >Բացեք ListView Օրինակ</string>
     <string name="recyclerViewText" />
     <string name="name" />
+    <string name="type_something">type something</string>
 </resources>

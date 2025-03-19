@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.raaceinm.androidpracticals.R
 import com.raaceinm.androidpracticals.Tools.CPUItem
 import com.raaceinm.androidpracticals.Tools.RecyclerViewAdapter
 import com.raaceinm.androidpracticals.Tools.getCPUDataSet
 import com.raaceinm.androidpracticals.Tools.getCPUImageDataSet
-
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class RecyclerViewFragment : Fragment() {
     private var name = getCPUDataSet()
@@ -40,7 +39,7 @@ class RecyclerViewFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_recycler_view, container, false)
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = RecyclerViewAdapter(generateList())
 
         return view
