@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         videoView = findViewById(R.id.videoView2);
         Vid vid = new Vid(videoView, this,VideoFileNameDefault);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main),
+                (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -64,17 +65,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, FilesTestActivity.class);
             intent.putExtra("autoCompleteTextView", inputtedURL);
             startActivity(intent);
+
+            Intent rt = new Intent(this, FilesTestActivity.class);
+            rt.putExtra("autoCompleteTextView", inputtedURL);
+            startActivity(rt);
         });
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume activity initialized");
 
         Bundle arguments = getIntent().getExtras();
-
         new Thread(() -> {
 
             if (arguments != null) {
@@ -114,6 +111,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume activity initialized");
+
+
+
+    }
+
     protected void onPause(){
         super.onPause();
         Log.i(TAG, "onPause activity initialized");
@@ -121,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStop(){
         super.onStop();
-        Log.i(TAG, "onStop activity initialized");
+        Log.d(TAG, "onStop activity initialized");
 
         Vid vid = new Vid(videoView, this,VideoFileNameDefault);
         vid.clearVideoCache(VideoFileNameDefault);

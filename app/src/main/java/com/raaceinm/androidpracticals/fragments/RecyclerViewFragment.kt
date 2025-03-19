@@ -5,25 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raaceinm.androidpracticals.R
+import com.raaceinm.androidpracticals.Tools.CPUItem
 import com.raaceinm.androidpracticals.Tools.RecyclerViewAdapter
+import com.raaceinm.androidpracticals.Tools.getCPUDataSet
+import com.raaceinm.androidpracticals.Tools.getCPUImageDataSet
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class RecyclerViewFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
+    private var name = getCPUDataSet()
+    private var ImageUrl = getCPUImageDataSet()
+
+    private fun generateList(): ArrayList<CPUItem> {
+        val arrayList = ArrayList<CPUItem>()
+        for (i in name.indices) {
+            arrayList.add(CPUItem(name[i], ImageUrl[i]))
+        }
+        return arrayList
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+
     }
 
     override fun onCreateView(
@@ -33,8 +39,10 @@ class RecyclerViewFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_recycler_view, container, false)
 
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerView.adapter = RecyclerViewAdapter(generateList())
 
         return view
     }
-
 }

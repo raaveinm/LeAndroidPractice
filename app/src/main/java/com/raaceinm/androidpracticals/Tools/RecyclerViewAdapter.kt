@@ -1,38 +1,38 @@
 package com.raaceinm.androidpracticals.Tools
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.compose.foundation.gestures.snapping.SnapPosition.End.position
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.raaceinm.androidpracticals.R
+import com.raaceinm.androidpracticals.fragments.RecyclerViewFragment
 
-class RecyclerViewAdapter (private val dataSet: Array<String>):
-    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val arrayList: ArrayList<CPUItem>) :
+    RecyclerView.Adapter<RecyclerViewAdapter.MyRow>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val textView: TextView
-        val imageView: ImageView
 
-        init{
-            textView = view.findViewById(R.id.textView)
-            imageView = view.findViewById(R.id.imageView)
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRow {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recyclerview_item, parent, false)
+        return MyRow(view)
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int):
-            RecyclerViewAdapter.ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.recycler_view_element,
-            viewGroup, false)
-        return ViewHolder(view)
+    override fun onBindViewHolder(holder: MyRow, position: Int) {
+        holder.textView.text = arrayList[position].name
+        Glide.with(holder.itemView.context).load(arrayList[position].imageUrl).into(holder.imageView)
     }
 
-    override fun onBindViewHolder(viewHolder:ViewHolder, position: Int) {
-        val cpuItem = dataSet[position]
-
+    override fun getItemCount(): Int {
+        return arrayList.size
     }
 
-    override fun getItemCount() = dataSet.size
+    class MyRow(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textView: TextView = itemView.findViewById(R.id.textView)
+        val imageView: ImageView = itemView.findViewById(R.id.imageView)
+    }
 }

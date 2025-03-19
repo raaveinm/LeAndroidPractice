@@ -16,8 +16,8 @@
 
 
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="-77dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-62dp" />
 
     <TextView
         android:id="@+id/TextSection"

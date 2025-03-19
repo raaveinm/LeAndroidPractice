@@ -33,7 +33,6 @@ public class FilesTestActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> resultLauncher;
     private Boolean isRegistered = false;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +84,7 @@ public class FilesTestActivity extends AppCompatActivity {
         Log.i(TAG, "onPause activity initialized");
     }
 
-
+    @Override
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "onResume activity initialized");

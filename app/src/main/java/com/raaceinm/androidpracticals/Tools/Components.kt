@@ -1,9 +1,5 @@
 package com.raaceinm.androidpracticals.Tools
 
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.res.stringArrayResource
-
 data class GPUs(var name: String)
 
 var GPUData: List<GPUs> = mutableListOf(
@@ -24,12 +20,39 @@ var GPUData: List<GPUs> = mutableListOf(
     GPUs("AMD Radeon RX Vega 64")
 )
 
-fun getGPUDataSet(): List<GPUs> {
-    return GPUData
+
+
+fun  setGPUDataSet(item: String) {
+    GPUData = GPUData.toMutableList().apply {
+        add(GPUs(item))
+    }
 }
 
-fun  setGPUDataSet(item: List<GPUs>) {
-    GPUData = GPUData.toMutableList().also { it.addAll(item) }
-}
+var CPUData: Array<String> = arrayOf(
+    "AMD Ryzen 9 7950X3D",
+    "AMD Ryzen 9 7900X",
+    "AMD Ryzen 9 7900",
+    "AMD Ryzen 7 7800X3D",
+    "AMD Ryzen 7 7700X",
+    "AMD Ryzen 5 7600X",
+    "AMD Ryzen 9 5900X",
+    "AMD Ryzen 7 5800X",
+    "AMD Ryzen 5 5600X",
+)
+
+var CPUImage: Array<String> = arrayOf(
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-9-7900x3d.jpg",
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-9-7900x.jpg",
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-9-7900x.jpg",
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-7-7800x3d.jpg",
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-7-7700x.jpg",
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-5-7600x.jpg",
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-9-5900x.jpg",
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-7-5800x.jpg",
+    "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-5-5600x.jpg")
+
+fun getCPUDataSet() = CPUData
+fun getCPUImageDataSet() = CPUImage
+fun getGPUDataSet() = GPUData
 
 data class CPUItem(val name: String, val imageUrl: String)
