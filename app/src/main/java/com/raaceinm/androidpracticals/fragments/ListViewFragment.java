@@ -67,4 +67,6 @@ public class ListViewFragment extends Fragment {
             customAdapter.notifyDataSetChanged();
         }
     }
+
+
 }

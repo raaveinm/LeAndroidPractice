@@ -143,7 +143,6 @@ public class ExperimentalSheesh extends AppCompatActivity {
                                 textName.getText().toString(),
                                 Integer.parseInt(textAge.getText().toString()));
 
-
                         Intent intent = new Intent(this, MainActivity.class);
                         intent.putExtra("Sterilization", personalData);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

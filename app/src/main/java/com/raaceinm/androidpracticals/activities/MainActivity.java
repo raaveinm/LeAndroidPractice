@@ -70,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
             rt.putExtra("autoCompleteTextView", inputtedURL);
             startActivity(rt);
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume activity initialized");
 
         Bundle arguments = getIntent().getExtras();
         new Thread(() -> {
@@ -108,16 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 Vid vid = new Vid(videoView, this, VideoFileNameDefault);
             }
         }).start();
-
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume activity initialized");
-
-
 
     }
 

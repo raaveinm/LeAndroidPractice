@@ -2,6 +2,7 @@ package com.raaceinm.androidpracticals.activities;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.raaceinm.androidpracticals.Tools.ComponentsKt.deleteGPUDataSet;
 import static com.raaceinm.androidpracticals.Tools.ComponentsKt.getGPUData;
 import static com.raaceinm.androidpracticals.Tools.ComponentsKt.setGPUDataSet;
 
@@ -103,23 +104,35 @@ public class PrivateContent extends AppCompatActivity {
             fragmentTransaction.replace(R.id.hiddenFrameLayout, new AddNewCard(), "fragment3");
             Log.d("EEE", "pressed addGPU");
         } else if (view.getId() == R.id.confirm) {
-            ReNewList(textView.getText().toString());
+            ReNewList(textView.getText().toString(),"");
             fragmentTransaction.replace(R.id.hiddenFrameLayout, new ContentResolver(), "fragment1");
             Log.d("EEE", "pressed confirm");
-        } else {
+        } else if(view.getId() == R.id.remove){
+            ReNewList("",textView.getText().toString());
+        }else{
             Log.e("EEE", "Unknown button pressed");
         }
         fragmentTransaction.commit();
     }
 
-    private void ReNewList(String NewItem) {
-        if (NewItem.isEmpty()) {
+    private void ReNewList(String newItem, String deleteItem) {
+        if (newItem.isEmpty() && deleteItem.isEmpty()) {
             Snackbar.make(this.findViewById(android.R.id.content), "please enter a name",
                     Snackbar.LENGTH_LONG).show();
-        } else {
-            setGPUDataSet(NewItem);
+        } else if (deleteItem.isEmpty()){
+            setGPUDataSet(newItem);
             FragmentManager fragmentManager = getSupportFragmentManager();
-            ListViewFragment listViewFragment = (ListViewFragment) fragmentManager.findFragmentByTag("fragment1");
+            ListViewFragment listViewFragment =
+                    (ListViewFragment) fragmentManager.findFragmentByTag("fragment1");
+
+            if(listViewFragment != null){
+                listViewFragment.updateList();
+            }
+        }else if (newItem.isEmpty()){
+            deleteGPUDataSet(deleteItem);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            ListViewFragment listViewFragment =
+                    (ListViewFragment) fragmentManager.findFragmentByTag("fragment1");
 
             if(listViewFragment != null){
                 listViewFragment.updateList();

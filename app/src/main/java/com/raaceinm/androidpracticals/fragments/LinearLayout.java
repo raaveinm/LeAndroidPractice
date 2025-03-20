@@ -15,13 +15,6 @@ public class LinearLayout extends Fragment {
     public LinearLayout() {
         // Required empty public constructor
     }
-    public static LinearLayout newInstance(String param1, String param2) {
-        LinearLayout fragment = new LinearLayout();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

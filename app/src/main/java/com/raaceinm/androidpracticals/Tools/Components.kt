@@ -28,6 +28,12 @@ fun  setGPUDataSet(item: String) {
     }
 }
 
+fun deleteGPUDataSet(item: String) {
+    GPUData = GPUData.toMutableList().apply {
+        remove(GPUs(item))
+    }
+}
+
 var CPUData: Array<String> = arrayOf(
     "AMD Ryzen 9 7950X3D",
     "AMD Ryzen 9 7900X",

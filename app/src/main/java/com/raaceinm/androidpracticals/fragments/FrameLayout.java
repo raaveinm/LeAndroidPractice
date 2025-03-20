@@ -32,14 +32,8 @@ public class FrameLayout extends Fragment {
         return inflater.inflate(R.layout.fragment_frame_layout, container, false);
     }
 
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
     @Override
     public void onStart() {
-
-
         super.onStart();
     }
 }

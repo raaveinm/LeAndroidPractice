@@ -40,6 +40,16 @@
             android:background="@drawable/background_butt"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"/>
+        <Button
+            android:id="@+id/remove"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:text="remove"
+            android:onClick="FragmentManager"
+            android:background="@drawable/background_butt"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"/>
     </LinearLayout>
 
 </LinearLayout>
