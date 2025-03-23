@@ -9,8 +9,6 @@
     android:background="?attr/backgroundColor"
     android:orientation="vertical">
 
-
-
     <Space
         android:layout_width="wrap_content"
         android:layout_height="25dp" />
@@ -75,8 +73,6 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"/>
             </LinearLayout>
-
-
 
             <Space
                 android:layout_width="match_parent"

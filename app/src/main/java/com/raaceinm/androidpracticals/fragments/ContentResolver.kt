@@ -33,6 +33,7 @@ class ContentResolver : Fragment(), AdapterView.OnItemSelectedListener {
         }
         return view
     }
+
     private fun collapseSpinner(spinner: Spinner) {
         try {
             val method = Spinner::class.java.getDeclaredMethod("getPopup")

@@ -141,7 +141,7 @@ public class FilesTestActivity extends AppCompatActivity {
         frameLayout.setVisibility(GONE);
     }
     public void Register(View view) {
-        Intent register = new Intent(this, PrivateContent.class);
+        Intent register = new Intent(this, PrivateActivity.class);
         if (isRegistered) {
             register.putExtra("isRegistered", true);
             startActivity(register);
