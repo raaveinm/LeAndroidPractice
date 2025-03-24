@@ -11,43 +11,46 @@ import com.raaceinm.androidpracticals.R
 import com.raaceinm.androidpracticals.Tools.GPUs
 import com.raaceinm.androidpracticals.Tools.getGPUDataSet
 
-class ListViewFragment: Fragment() {
-    var listItems: List<GPUs> = getGPUDataSet()
+class ListViewFragment : Fragment() {
+
     private var customListView: ListView? = null
     private var customAdapter: ArrayAdapter<String>? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-
+    ): View {
         val view = inflater.inflate(R.layout.fragment_list_view, container, false)
+
         customListView = view.findViewById(R.id.listViewArray)
-        customAdapter = ArrayAdapter(requireContext(),
-            android.R.layout.simple_list_item_1, getNames(listItems))
-        customListView?.setAdapter(customAdapter)
+
+        val listItems: List<GPUs> = getGPUDataSet()
+        customAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            getNames(listItems)
+        )
+        customListView?.adapter = customAdapter
         return view
     }
 
-    private fun getNames(gpuList: List<GPUs>):List<String>{
-        var names = mutableListOf<String>()
-        for (card in gpuList){
+    private fun getNames(gpuList: List<GPUs>): List<String> {
+        val names = mutableListOf<String>()
+        for (card in gpuList) {
             names.add(card.name)
         }
         return names
     }
 
-    fun updateList(){
-        if(customAdapter != null){
-            customAdapter!!.clear()
-            customAdapter!!.addAll(getNames(listItems))
-            customAdapter!!.notifyDataSetChanged()
+    fun updateList() {
+        val listItems: List<GPUs> = getGPUDataSet()
+
+        customAdapter?.let { adapter ->
+            adapter.clear()
+            adapter.addAll(getNames(listItems))
+            adapter.notifyDataSetChanged()
         }
     }
 }
