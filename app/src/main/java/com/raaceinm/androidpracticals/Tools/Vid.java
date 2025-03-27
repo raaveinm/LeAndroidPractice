@@ -22,7 +22,7 @@ public class Vid {
         playVideo(videoFileName);
     }
 
-    private void playVideo(String videoFileName) {
+    public void playVideo(String videoFileName) {
         try {
             File outputFile = new File(context.getCacheDir(), videoFileName);
 

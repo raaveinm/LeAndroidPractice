@@ -1,148 +1,86 @@
-package com.raaceinm.androidpracticals.activities;
+package com.raaceinm.androidpracticals.activities
 
-import static android.view.View.GONE;
-import static android.widget.Toast.LENGTH_LONG;
-import static android.widget.Toast.LENGTH_SHORT;
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.raaceinm.androidpracticals.R
+import com.raaceinm.androidpracticals.fragments.HomeFragment
+import com.raaceinm.androidpracticals.fragments.DashboardFragment
+import com.raaceinm.androidpracticals.fragments.BlankMenuFragment
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.Toast;
-import android.widget.VideoView;
+class MainActivity : AppCompatActivity() {
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var toolbar: Toolbar
 
-import com.raaceinm.androidpracticals.R;
-import com.raaceinm.androidpracticals.Tools.Sterilization;
-import com.raaceinm.androidpracticals.Tools.Vid;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+        setContentView(R.layout.activity_main)
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "asd";
-    private static final String VideoFileNameDefault = "background.mp4";
-    private static final String VideoFileNameExtra = "IP.mp4";
-    private VideoView videoView;
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Blank Menu"
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.home)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.i(TAG, "onCreate activity initialized");
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            bottomNavigationView.selectedItemId = R.id.home
+            loadFragment(HomeFragment(), false)
+        }
 
-        videoView = findViewById(R.id.videoView2);
-        Vid vid = new Vid(videoView, this,VideoFileNameDefault);
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main),
-                (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-    }
-
-    protected void onStart(){
-        super.onStart();
-        Log.i(TAG, "onStart activity initialized");
-
-        Button dropMeButton = findViewById(R.id.button);
-
-        dropMeButton.setOnClickListener(v -> {
-
-            Toast.makeText(this,"achtung",LENGTH_SHORT).show();
-
-            AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);
-            String inputtedURL = autoCompleteTextView.getText().toString();
-
-            Log.i(TAG, "Inputted URL: " + inputtedURL);
-
-            Intent intent = new Intent(this, FilesTestActivity.class);
-            intent.putExtra("autoCompleteTextView", inputtedURL);
-            startActivity(intent);
-
-            Intent rt = new Intent(this, FilesTestActivity.class);
-            rt.putExtra("autoCompleteTextView", inputtedURL);
-            startActivity(rt);
-        });
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume activity initialized");
-
-        Bundle arguments = getIntent().getExtras();
-        new Thread(() -> {
-
-            if (arguments != null) {
-                Float Phone = Sterilization.getPhone();
-                String Email = Sterilization.getEmail();
-                String Password = Sterilization.getPassword();
-                String name = Sterilization.getName();
-                Integer Age = Sterilization.getAge();
-
-                if (name != null) {
-                    videoView = findViewById(R.id.videoView2);
-                    Vid vid = new Vid(videoView, this, VideoFileNameDefault);
-                    vid.clearVideoCache(VideoFileNameDefault);
-
-                    Vid vidExtra = new Vid(videoView, this, VideoFileNameExtra);
-
-                    AutoCompleteTextView autoCompleteTextView = findViewById(R.id.completed_sheesh);
-                    autoCompleteTextView.setVisibility(GONE);
-
-                    Toast.makeText(this, "data has been stolen successful, dear " +
-                            name, LENGTH_LONG).show();
-
-                    Log.v("STOLEN DATA", "NAME " + name);
-                    Log.v("STOLEN DATA", "PHONE " + Phone);
-                    Log.v("STOLEN DATA", "EMAIL " + Email);
-                    Log.v("STOLEN DATA", "PASSWORD " + Password);
-                    Log.v("STOLEN DATA", "AGE " + Age);
-                } else {
-                    videoView = findViewById(R.id.videoView2);
-                    Vid vid = new Vid(videoView, this, VideoFileNameDefault);
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            var selectedFragment: Fragment? = null
+            when (item.itemId) {
+                R.id.home -> {
+                    selectedFragment = HomeFragment()
+                    supportActionBar?.setHomeAsUpIndicator(R.drawable.home)
+                    supportActionBar?.title = "Home"
                 }
-            } else {
-                videoView = findViewById(R.id.videoView2);
-                Vid vid = new Vid(videoView, this, VideoFileNameDefault);
+                R.id.dashboard -> {
+                    selectedFragment = DashboardFragment()
+                    supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_left)
+                    supportActionBar?.title = "Dashboard"
+                }
+                R.id.blank_menu_fragment -> {
+                    selectedFragment = BlankMenuFragment()
+                    supportActionBar?.setHomeAsUpIndicator(R.drawable.arrow_left)
+                    supportActionBar?.title = "Blank Menu"
+                }
             }
-        }).start();
 
+            if (selectedFragment != null) {
+                val addToBackStack = item.itemId != R.id.home
+                loadFragment(selectedFragment, addToBackStack)
+            }
+            true
+        }
     }
 
-    protected void onPause(){
-        super.onPause();
-        Log.i(TAG, "onPause activity initialized");
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                loadFragment(HomeFragment(), false)
+                bottomNavigationView.selectedItemId = R.id.home
+                supportActionBar?.setHomeAsUpIndicator(R.drawable.home)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
-    protected void onStop(){
-        super.onStop();
-        Log.d(TAG, "onStop activity initialized");
+    private fun loadFragment(fragment: Fragment, addToBackStack: Boolean) {
+        val transaction = supportFragmentManager.beginTransaction()
+            .replace(R.id.menuFragments, fragment)
 
-        Vid vid = new Vid(videoView, this,VideoFileNameDefault);
-        vid.clearVideoCache(VideoFileNameDefault);
-    }
-
-    protected void onRestart(){
-        super.onRestart();
-        Log.i(TAG, "onRestart activity initialized");
-    }
-
-    protected void onDestroy(){
-        super.onDestroy();
-        Log.i(TAG, "onDestroy activity initialized");
-
-        Vid vidDefault = new Vid(videoView, this,VideoFileNameDefault);
-        vidDefault.clearVideoCache(VideoFileNameDefault);
-        Vid vidExtra = new Vid(videoView, this,VideoFileNameExtra);
-        vidExtra.clearVideoCache(VideoFileNameExtra);
+        if (addToBackStack) {
+            transaction.addToBackStack(null)
+        }
+        transaction.commit()
     }
 }

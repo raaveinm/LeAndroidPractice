@@ -1,79 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <VideoView
-        android:id="@+id/videoView2"
-        android:layout_width="fill_parent"
-        android:layout_height="1000dp"
-        android:layoutDirection="inherit"
-
-
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-62dp" />
-
-    <TextView
-        android:id="@+id/TextSection"
-        android:layout_width="175dp"
-        android:layout_height="20dp"
-        android:paddingEnd="10dp"
-        android:background="@drawable/notborder"
-        android:text="@string/this_is_first_practical_work"
-        android:textAlignment="textEnd"
-        android:textColor="@color/white"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintVertical_bias="0.008"
-
-        tools:ignore="RtlSymmetry" />
-
-    <AutoCompleteTextView
-        android:id="@+id/completed_sheesh"
-        android:layout_width="324dp"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border"
-        android:minHeight="48dp"
-        android:paddingStart="40dp"
-        android:text="@string/completed_sheesh"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+        android:fitsSystemWindows="true">
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872"
-        tools:ignore="RtlSymmetry" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/app_name" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="209dp"
-        android:layout_height="52dp"
-        android:background="@drawable/border"
-        android:text="@string/i_want_to_teleport"
-        android:textSize="17sp"
-        android:textAlignment="viewStart"
-        android:paddingStart="40dp"
+    </com.google.android.material.appbar.AppBarLayout>
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946"
-        tools:ignore="RtlSymmetry" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/menuFragments"
+        android:name="com.raaceinm.androidpracticals.fragments.HomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginBottom="?attr/actionBarSize" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/menu_nav" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
