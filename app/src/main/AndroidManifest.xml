@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.AndroidPracticals"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.TimePicker"
+            android:exported="false" />
 
         <service
             android:name=".services.ChirroPlayer"
@@ -20,7 +23,6 @@
             <intent-filter>
                 <action android:name="android.service.media.CONTENT_URI" />
             </intent-filter>
-
         </service>
 
         <activity
